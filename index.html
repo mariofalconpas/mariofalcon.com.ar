@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mario Falcón — PAS · Analista de Riesgos</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,500;0,700;0,900;1,700&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0B1C3F;
+  --gold: #C8A84B;
+  --gold-dim: rgba(200,168,75,0.15);
+  --white: #FFFFFF;
+  --off: #e8edf5;
+  --muted: rgba(255,255,255,0.5);
+  --border: rgba(200,168,75,0.2);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Red Hat Display', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 99;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; height: 56px;
+  background: rgba(11,28,63,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-id { display: flex; align-items: center; gap: 10px; }
+.nav-mono {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 14px; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.5px;
+}
+.nav-name { font-weight: 800; font-size: 17px; }
+.nav-btn {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 700; font-size: 15px;
+  background: var(--gold); color: var(--navy);
+  border: none; border-radius: 6px;
+  padding: 8px 18px; cursor: pointer;
+  text-decoration: none; letter-spacing: 0.2px;
+  transition: opacity .15s;
+}
+.nav-btn:hover { opacity: .85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: calc(100svh - 56px);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 72px 28px 56px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -120px; right: -80px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(200,168,75,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 13px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::after {
+  content: ''; flex: 1; max-width: 40px;
+  height: 1px; background: var(--gold); opacity: .4;
+}
+.hero h1 {
+  font-size: clamp(38px, 9vw, 64px);
+  font-weight: 900; line-height: 1.0;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+.hero h1 .line-gold { color: var(--gold); display: block; }
+.hero h1 .line-dim { color: rgba(255,255,255,0.35); display: block; font-style: italic; font-weight: 700; }
+
+.hero-body {
+  font-size: 18px; line-height: 1.65;
+  color: var(--muted); max-width: 480px;
+  margin-bottom: 40px;
+  border-left: 2px solid var(--gold);
+  padding-left: 16px;
+}
+
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.cta-main {
+  background: var(--gold); color: var(--navy);
+  font-weight: 800; font-size: 15px;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: transform .15s, opacity .15s;
+}
+.cta-main:hover { transform: translateY(-2px); opacity: .9; }
+
+.cta-ghost {
+  color: rgba(255,255,255,0.6); font-size: 14px;
+  padding: 15px 20px; border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: border-color .15s, color .15s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.cta-ghost:hover { border-color: rgba(255,255,255,0.35); color: var(--white); }
+
+/* ── CASOS ── */
+.casos { padding: 80px 28px; }
+.casos-label {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 40px;
+}
+
+.casos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.caso {
+  padding: 28px 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid transparent;
+  transition: background .2s;
+  cursor: default;
+}
+.caso:hover { background: rgba(200,168,75,0.06); }
+
+.caso-num {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; color: var(--gold);
+  letter-spacing: 1px; margin-bottom: 12px;
+}
+.caso h3 {
+  font-size: 18px; font-weight: 800;
+  margin-bottom: 8px; line-height: 1.2;
+}
+.caso p {
+  font-size: 15px; color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ── DIFERENCIAL ── */
+.diferencial {
+  margin: 0 28px;
+  background: var(--gold);
+  border-radius: 16px;
+  padding: 40px 28px;
+  color: var(--navy);
+}
+.dif-tag {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; opacity: .6;
+  margin-bottom: 16px;
+}
+.diferencial blockquote {
+  font-size: clamp(20px, 5vw, 28px);
+  font-weight: 900; line-height: 1.2;
+  letter-spacing: -0.5px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.diferencial p {
+  font-size: 16px; line-height: 1.6;
+  opacity: .75; max-width: 480px;
+}
+
+/* ── MÉTODO ── */
+.metodo { padding: 80px 28px; }
+.metodo-header {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 40px;
+}
+.metodo h2 {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 900; letter-spacing: -0.8px;
+  margin-bottom: 40px; line-height: 1.15;
+}
+
+.pasos { display: flex; flex-direction: column; gap: 1px; }
+
+.paso {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  align-items: start;
+}
+.paso:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+.paso-n {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 28px; font-weight: 500;
+  color: var(--gold); opacity: .35;
+  line-height: 1; padding-top: 4px;
+  letter-spacing: -1px;
+}
+.paso h3 {
+  font-size: 19px; font-weight: 800;
+  margin-bottom: 6px;
+}
+.paso p { font-size: 16px; color: var(--muted); line-height: 1.55; }
+
+/* ── CONTACTO ── */
+.contacto { padding: 80px 28px 40px; }
+.contacto-label {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px;
+}
+.contacto h2 {
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 900; letter-spacing: -1px;
+  margin-bottom: 8px; line-height: 1.1;
+}
+.contacto-sub {
+  font-size: 17px; color: var(--muted);
+  margin-bottom: 36px; line-height: 1.5;
+}
+
+.links-contacto {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 36px;
+}
+.link-c {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none; color: var(--white);
+  font-size: 14px;
+  transition: background .15s, border-color .15s;
+}
+.link-c:hover { background: rgba(200,168,75,0.08); border-color: rgba(200,168,75,0.4); }
+.link-c-icon { font-size: 18px; width: 24px; text-align: center; }
+.link-c-label {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 2px;
+}
+.link-c-val { font-weight: 600; font-size: 16px; }
+
+/* FORM WA */
+.wa-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px;
+}
+.wa-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+.wa-box .wa-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+
+.fg { margin-bottom: 14px; }
+.fg label {
+  display: block;
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 7px;
+}
+.fg input, .fg select {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 14px 16px;
+  color: var(--white); font-size: 17px;
+  font-family: 'Red Hat Display', sans-serif;
+  outline: none; appearance: none;
+  transition: border-color .2s;
+}
+.fg input:focus, .fg select:focus { border-color: var(--gold); }
+.fg input::placeholder { color: rgba(255,255,255,0.25); }
+.fg select option { background: #0B1C3F; }
+
+.btn-wa {
+  width: 100%; margin-top: 6px;
+  background: #22C55E; color: white;
+  border: none; border-radius: 10px;
+  padding: 18px; font-size: 18px; font-weight: 800;
+  font-family: 'Red Hat Display', sans-serif;
+  cursor: pointer; letter-spacing: .1px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: background .15s, transform .15s;
+}
+.btn-wa:hover { background: #16a34a; transform: translateY(-1px); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 13px; letter-spacing: .5px;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.8;
+}
+footer span { color: rgba(200,168,75,0.6); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 500px) {
+  .casos-grid { grid-template-columns: 1fr; }
+  .hero h1 { letter-spacing: -1.5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-id">
+    <div>
+      <div class="nav-name">Mario Falcón</div>
+      <div class="nav-mono">PAS · SSN 98319</div>
+    </div>
+  </div>
+  <a href="#contacto" class="nav-btn">Consultar →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Productor Asesor · Buenos Aires</div>
+  <h1>
+    <span class="line-dim">Hay productores.</span>
+    Y hay <span class="line-gold">analistas<br>de riesgos.</span>
+  </h1>
+  <p class="hero-body">
+    Consorcios, comercios y PyMEs que necesitan saber exactamente qué cubre su póliza — y qué no — antes de que ocurra el siniestro.
+  </p>
+  <div class="hero-ctas">
+    <a href="#contacto" class="cta-main">💬 Hablar por WhatsApp</a>
+    <a href="#casos" class="cta-ghost">Ver coberturas ↓</a>
+  </div>
+</section>
+
+<!-- CASOS -->
+<section class="casos" id="casos">
+  <div class="casos-label">¿Cuál es tu caso?</div>
+  <div class="casos-grid">
+
+    <div class="caso">
+      <div class="caso-num">01</div>
+      <h3>Consorcio de Propietarios</h3>
+      <p>Incendio, RC, ascensores y espacios comunes. Verificamos que la póliza cumpla la ley sin pagar de más ni quedar expuesto ante un siniestro.</p>
+    </div>
+
+    <div class="caso">
+      <div class="caso-num">02</div>
+      <h3>Comercio o Local</h3>
+      <p>Daños materiales, robo y RC frente a terceros. Analizamos tu actividad concreta para no pagar coberturas que no usás.</p>
+    </div>
+
+    <div class="caso">
+      <div class="caso-num">03</div>
+      <h3>PyME e Industria</h3>
+      <p>Incendio, Pérdida de Beneficios y RC Comprensiva. Modelamos pérdidas máximas para proteger la empresa sin descapitalizarla en primas.</p>
+    </div>
+
+    <div class="caso">
+      <div class="caso-num">04</div>
+      <h3>Personas y Familias</h3>
+      <p>Automotores, hogar y accidentes personales. Comparamos el mercado, explicamos cada cláusula y te acompañamos en el siniestro.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIFERENCIAL -->
+<div class="diferencial" id="diferencial">
+  <div class="dif-tag">Por qué no es lo mismo</div>
+  <blockquote>"La póliza es la consecuencia del análisis. No al revés."</blockquote>
+  <p>La mayoría de los productores cotiza primero y pregunta después. Nosotros caminamos tus instalaciones, entendemos tu riesgo real y diseñamos la cobertura desde ahí.</p>
+</div>
+
+<!-- MÉTODO -->
+<section class="metodo" id="metodo">
+  <div class="metodo-header">Cómo trabajo</div>
+  <h2>Del riesgo a la cobertura,<br>sin atajos.</h2>
+
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-n">01</div>
+      <div>
+        <h3>Diagnóstico del riesgo real</h3>
+        <p>No revisamos tu póliza en la primera reunión. Caminamos tus instalaciones y entendemos tu actividad antes de hablar de coberturas.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-n">02</div>
+      <div>
+        <h3>Matriz de riesgo con números</h3>
+        <p>Identificamos áreas críticas y cuantificamos el impacto económico real de cada evento. Lucro cesante, RC, paralización — todo con cifra concreta.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-n">03</div>
+      <div>
+        <h3>Cobertura diseñada a medida</h3>
+        <p>La póliza que armamos es la consecuencia del análisis. Sin coberturas de relleno. Sin vacíos que descubrís recién cuando ocurre el siniestro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="contacto-label">Contacto</div>
+  <h2>Hablemos antes<br>de que lo necesites.</h2>
+  <p class="contacto-sub">La mejor consulta es la que se hace antes del siniestro. Sin cargo ni compromiso — en 24 horas tenés una respuesta concreta.</p>
+
+  <div class="links-contacto">
+    <a class="link-c" href="mailto:contacto@mariofalcon.com.ar">
+      <span class="link-c-icon">✉️</span>
+      <div>
+        <span class="link-c-label">Email</span>
+        <span class="link-c-val">contacto@mariofalcon.com.ar</span>
+      </div>
+    </a>
+    <a class="link-c" href="https://www.linkedin.com/in/mario-falc%C3%B3n" target="_blank">
+      <span class="link-c-icon">💼</span>
+      <div>
+        <span class="link-c-label">LinkedIn</span>
+        <span class="link-c-val">mario-falcón</span>
+      </div>
+    </a>
+    <a class="link-c" href="https://instagram.com/mf_pas" target="_blank">
+      <span class="link-c-icon">📸</span>
+      <div>
+        <span class="link-c-label">Instagram</span>
+        <span class="link-c-val">@mf_pas</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="wa-box">
+    <h3>Consulta directa</h3>
+    <p class="wa-sub">Completá y te armo el mensaje listo para enviar.</p>
+
+    <div class="fg">
+      <label>Tu nombre o administración</label>
+      <input type="text" id="nombre" placeholder="Ej: Administración Sur / Juan Pérez">
+    </div>
+    <div class="fg">
+      <label>¿Qué necesitás asegurar?</label>
+      <select id="rubro">
+        <option value="Consorcio / Edificio">Consorcio / Edificio</option>
+        <option value="Comercio o Local">Comercio o Local</option>
+        <option value="PyME o Industria">PyME o Industria</option>
+        <option value="Automotor / Seguro personal">Automotor / Seguro personal</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+
+    <button class="btn-wa" onclick="enviarWA()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.112 1.523 5.838L.057 23.428a.75.75 0 0 0 .921.921l5.67-1.498A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.716 9.716 0 0 1-4.95-1.353l-.355-.21-3.664.968.983-3.595-.229-.368A9.716 9.716 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+      Enviar por WhatsApp
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Mario Falcón</span> · Productor Asesor de Seguros<br>
+  Matrícula SSN Nº 98319 · Buenos Aires
+</footer>
+
+<script>
+function enviarWA() {
+  const nombre = document.getElementById('nombre').value.trim() || 'Sin especificar';
+  const rubro = document.getElementById('rubro').value;
+  const msg = encodeURIComponent(
+    `Hola Mario, te escribo desde tu web.\n\nNombre / Administración: ${nombre}\nConsulta sobre: ${rubro}\n\n¿Podemos hablar?`
+  );
+  window.open(`https://wa.me/5491161148632?text=${msg}`, '_blank');
+}
+</script>
+</body>
+</html>
