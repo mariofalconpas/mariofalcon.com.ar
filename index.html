@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mario Falcón — PAS · Analista de Riesgos</title>
+<title>Mario Falcón — Productor Asesor de Seguros y Analista de Riesgos</title>
+<meta name="description" content="Productor Asesor de Seguros especializado en análisis de riesgos para consorcios, comercios y PyMEs de logística e industria. Primero entender el riesgo, después asegurarlo.">
+<meta property="og:title" content="Mario Falcón — Productor Asesor de Seguros y Analista de Riesgos">
+<meta property="og:description" content="Primero entender el riesgo. Después, asegurarlo. Consorcios, comercios y PyMEs de logística e industria.">
+<meta property="og:url" content="https://mariofalcon.com.ar/">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,500;0,700;0,900;1,700&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -86,6 +91,7 @@ nav {
   margin-bottom: 32px;
 }
 .hero h1 .line-gold { color: var(--gold); display: block; }
+.hero h1 .line-white { display: block; }
 .hero h1 .line-dim { color: rgba(255,255,255,0.35); display: block; font-style: italic; font-weight: 700; }
 
 .hero-body {
@@ -321,10 +327,88 @@ footer {
 }
 footer span { color: rgba(200,168,75,0.6); }
 
+/* ── GALERÍA ── */
+.galeria { padding: 0 28px 80px; }
+.galeria-label {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px;
+}
+.galeria h2 {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 900; letter-spacing: -0.8px;
+  margin-bottom: 36px; line-height: 1.15;
+}
+.gal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.gal-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  text-decoration: none; color: var(--white);
+  transition: background .2s, border-color .2s;
+}
+a.gal-item:hover { background: rgba(200,168,75,0.06); border-color: rgba(200,168,75,0.45); }
+.gal-tipo {
+  align-self: flex-start;
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; color: var(--navy);
+  background: var(--gold); border-radius: 4px;
+  padding: 3px 8px;
+}
+.gal-item h3 { font-size: 18px; font-weight: 800; line-height: 1.25; }
+.gal-item p { font-size: 15px; color: var(--muted); line-height: 1.55; }
+.gal-link { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--gold); }
+.gal-visual { display: flex; gap: 6px; align-items: flex-end; height: 44px; margin-bottom: 4px; }
+.gal-visual i { display: block; width: 14px; border-radius: 2px; background: rgba(200,168,75,0.35); }
+.gal-visual i.hl { background: var(--gold); }
+
+/* FORM MAIL */
+.fg textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 14px 16px;
+  color: var(--white); font-size: 17px;
+  font-family: 'Red Hat Display', sans-serif;
+  outline: none; resize: vertical; min-height: 96px;
+  transition: border-color .2s;
+}
+.fg textarea:focus { border-color: var(--gold); }
+.fg textarea::placeholder { color: rgba(255,255,255,0.25); }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.fg .opt { text-transform: none; letter-spacing: 0; color: rgba(255,255,255,0.4); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.btn-send {
+  width: 100%; margin-top: 6px;
+  background: var(--gold); color: var(--navy);
+  border: none; border-radius: 10px;
+  padding: 18px; font-size: 18px; font-weight: 800;
+  font-family: 'Red Hat Display', sans-serif;
+  cursor: pointer;
+  transition: opacity .15s, transform .15s;
+}
+.btn-send:hover { opacity: .9; transform: translateY(-1px); }
+.btn-send:disabled { opacity: .5; cursor: default; transform: none; }
+.form-status { margin-top: 14px; font-size: 15px; line-height: 1.5; min-height: 1em; }
+.form-status.ok { color: #4ADE80; }
+.form-status.err { color: #F87171; }
+.form-alt { margin-top: 16px; font-size: 14px; color: var(--muted); }
+.form-alt a { color: var(--gold); font-weight: 700; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 500px) {
   .casos-grid { grid-template-columns: 1fr; }
   .hero h1 { letter-spacing: -1.5px; }
+  .fg-row { grid-template-columns: 1fr; }
+  .nav-btn { padding: 8px 12px; font-size: 14px; }
 }
 </style>
 </head>
@@ -338,22 +422,22 @@ footer span { color: rgba(200,168,75,0.6); }
       <div class="nav-mono">PAS · SSN 98319</div>
     </div>
   </div>
-  <a href="#contacto" class="nav-btn">Consultar →</a>
+  <a href="#contacto" class="nav-btn">Pedir revisión técnica</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Productor Asesor · Buenos Aires</div>
+  <div class="hero-eyebrow">Productor Asesor de Seguros · Analista de Riesgos</div>
   <h1>
-    <span class="line-dim">Hay productores.</span>
-    Y hay <span class="line-gold">analistas<br>de riesgos.</span>
+    <span class="line-white">Primero entender el riesgo.</span>
+    <span class="line-gold">Después, asegurarlo.</span>
   </h1>
   <p class="hero-body">
-    Consorcios, comercios y PyMEs que necesitan saber exactamente qué cubre su póliza — y qué no — antes de que ocurra el siniestro.
+    Me especializo en el análisis de riesgos de consorcios, comercios y PyMEs de logística e industria. Antes de cotizar, analizo qué necesitás cubrir y por cuánto.
   </p>
   <div class="hero-ctas">
-    <a href="#contacto" class="cta-main">💬 Hablar por WhatsApp</a>
-    <a href="#casos" class="cta-ghost">Ver coberturas ↓</a>
+    <a href="#contacto" class="cta-main">Pedir revisión técnica</a>
+    <a href="#casos" class="cta-ghost">Ver lo que hago ↓</a>
   </div>
 </section>
 
@@ -364,26 +448,26 @@ footer span { color: rgba(200,168,75,0.6); }
 
     <div class="caso">
       <div class="caso-num">01</div>
-      <h3>Consorcio de Propietarios</h3>
-      <p>Incendio, RC, ascensores y espacios comunes. Verificamos que la póliza cumpla la ley sin pagar de más ni quedar expuesto ante un siniestro.</p>
+      <h3>Consorcios de propietarios</h3>
+      <p>Para administradores profesionales y propietarios a cargo. Integral de consorcio, incendio, RC, ascensores y espacios comunes, con sumas aseguradas que acompañan la inflación.</p>
     </div>
 
     <div class="caso">
       <div class="caso-num">02</div>
-      <h3>Comercio o Local</h3>
-      <p>Daños materiales, robo y RC frente a terceros. Analizamos tu actividad concreta para no pagar coberturas que no usás.</p>
+      <h3>Comercios minoristas</h3>
+      <p>Integral de comercio: edificio, contenido, robo y RC frente a clientes. Analizo tu actividad concreta para no pagar coberturas que no usás ni quedar con sumas bajas.</p>
     </div>
 
     <div class="caso">
       <div class="caso-num">03</div>
-      <h3>PyME e Industria</h3>
-      <p>Incendio, Pérdida de Beneficios y RC Comprensiva. Modelamos pérdidas máximas para proteger la empresa sin descapitalizarla en primas.</p>
+      <h3>PyMEs de logística y transporte</h3>
+      <p>Todo Riesgo Operativo para depósitos y bases, transporte de mercaderías y flota comercial. La operación protegida en el depósito y en la ruta.</p>
     </div>
 
     <div class="caso">
       <div class="caso-num">04</div>
-      <h3>Personas y Familias</h3>
-      <p>Automotores, hogar y accidentes personales. Comparamos el mercado, explicamos cada cláusula y te acompañamos en el siniestro.</p>
+      <h3>Industrias y talleres</h3>
+      <p>Incendio, rotura de maquinaria, pérdida de beneficios y RC. Modelo pérdidas máximas para proteger la empresa sin descapitalizarla en primas.</p>
     </div>
 
   </div>
@@ -391,9 +475,9 @@ footer span { color: rgba(200,168,75,0.6); }
 
 <!-- DIFERENCIAL -->
 <div class="diferencial" id="diferencial">
-  <div class="dif-tag">Por qué no es lo mismo</div>
+  <div class="dif-tag">Mi enfoque</div>
   <blockquote>"La póliza es la consecuencia del análisis. No al revés."</blockquote>
-  <p>La mayoría de los productores cotiza primero y pregunta después. Nosotros caminamos tus instalaciones, entendemos tu riesgo real y diseñamos la cobertura desde ahí.</p>
+  <p>Muchas pólizas se renuevan año tras año sin que nadie vuelva a mirar el riesgo. Mi trabajo empieza antes: recorro tus instalaciones, entiendo tu actividad y diseño la cobertura desde ahí.</p>
 </div>
 
 <!-- MÉTODO -->
@@ -406,23 +490,79 @@ footer span { color: rgba(200,168,75,0.6); }
       <div class="paso-n">01</div>
       <div>
         <h3>Diagnóstico del riesgo real</h3>
-        <p>No revisamos tu póliza en la primera reunión. Caminamos tus instalaciones y entendemos tu actividad antes de hablar de coberturas.</p>
+        <p>La primera reunión no es sobre la póliza. Recorro tus instalaciones y entiendo tu actividad antes de hablar de coberturas.</p>
       </div>
     </div>
     <div class="paso">
       <div class="paso-n">02</div>
       <div>
-        <h3>Matriz de riesgo con números</h3>
-        <p>Identificamos áreas críticas y cuantificamos el impacto económico real de cada evento. Lucro cesante, RC, paralización — todo con cifra concreta.</p>
+        <h3>Matriz de riesgo y valor de reposición</h3>
+        <p>Identifico áreas críticas, estimo el valor de reposición para detectar infraseguro y cuantifico el impacto económico de cada evento: lucro cesante, RC, paralización.</p>
       </div>
     </div>
     <div class="paso">
       <div class="paso-n">03</div>
       <div>
-        <h3>Cobertura diseñada a medida</h3>
-        <p>La póliza que armamos es la consecuencia del análisis. Sin coberturas de relleno. Sin vacíos que descubrís recién cuando ocurre el siniestro.</p>
+        <h3>Transferencia diseñada a medida</h3>
+        <p>La póliza es la consecuencia del análisis: coberturas, sumas y deducibles definidos con criterio. Sin relleno y sin vacíos que se descubren recién en el siniestro.</p>
       </div>
     </div>
+    <div class="paso">
+      <div class="paso-n">04</div>
+      <div>
+        <h3>Seguimiento y siniestros</h3>
+        <p>Actualizo las sumas aseguradas durante la vigencia y te acompaño técnicamente si ocurre un siniestro: denuncia, documentación y seguimiento con la aseguradora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="galeria" id="trabajos">
+  <div class="galeria-label">Lo que hago</div>
+  <h2>Trabajos, investigación<br>y comunidad.</h2>
+  <div class="gal-grid">
+
+    <div class="gal-item">
+      <div class="gal-visual" aria-hidden="true"><i style="height:40%"></i><i class="hl" style="height:95%"></i><i style="height:40%"></i><i class="hl" style="height:70%"></i></div>
+      <span class="gal-tipo">Caso</span>
+      <h3>Infraseguro detectado en un comercio</h3>
+      <p>Comercio en Bella Vista: la suma de Incendio Edificio no reflejaba el valor real. La corregimos antes de que ocurriera un siniestro.</p>
+    </div>
+
+    <div class="gal-item">
+      <div class="gal-visual" aria-hidden="true"><i style="height:30%"></i><i style="height:50%"></i><i style="height:70%"></i><i class="hl" style="height:95%"></i></div>
+      <span class="gal-tipo">Caso</span>
+      <h3>Actualización trimestral en un consorcio</h3>
+      <p>Consorcio en San Miguel: esquema de actualización trimestral de sumas aseguradas junto a la administración, para que la cobertura acompañe la inflación.</p>
+    </div>
+
+    <div class="gal-item">
+      <div class="gal-visual" aria-hidden="true"><i style="height:60%"></i><i class="hl" style="height:85%"></i><i style="height:55%"></i><i style="height:75%"></i></div>
+      <span class="gal-tipo">Caso</span>
+      <h3>Comparativo multipóliza para un consorcio</h3>
+      <p>Cuadro comparativo entre pólizas y aseguradoras con valuación de reposición, para decidir con números y no solo por precio.</p>
+    </div>
+
+    <a class="gal-item" href="https://consorcios.mariofalcon.com.ar" target="_blank" rel="noopener">
+      <span class="gal-tipo">Investigación</span>
+      <h3>Carga de vehículos eléctricos en consorcios</h3>
+      <p>Qué riesgos genera la infraestructura de carga en cocheras y qué cubre (y qué no) la póliza del consorcio.</p>
+      <span class="gal-link">Ver la guía ↗</span>
+    </a>
+
+    <div class="gal-item">
+      <span class="gal-tipo">Investigación</span>
+      <h3>Think Tank Alumni CAES–AAPAS</h3>
+      <p>Integro el equipo que investiga riesgos emergentes del mercado asegurador argentino: electromovilidad, micromovilidad e infraestructura de carga. Participé de la Jornada Internacional de Gestión de Riesgos en Movilidad Eléctrica (UCA).</p>
+    </div>
+
+    <div class="gal-item">
+      <span class="gal-tipo">Comunidad</span>
+      <h3>Coordinación Alumni AAPAS 2026</h3>
+      <p>Co-coordino la comunidad de Analistas de Riesgos PAS de la Asociación Argentina de Productores Asesores de Seguros: encuentros mensuales, formación continua y vinculación institucional.</p>
+    </div>
+
   </div>
 </section>
 
@@ -430,7 +570,7 @@ footer span { color: rgba(200,168,75,0.6); }
 <section class="contacto" id="contacto">
   <div class="contacto-label">Contacto</div>
   <h2>Hablemos antes<br>de que lo necesites.</h2>
-  <p class="contacto-sub">La mejor consulta es la que se hace antes del siniestro. Sin cargo ni compromiso — en 24 horas tenés una respuesta concreta.</p>
+  <p class="contacto-sub">Pedí una revisión técnica de tus coberturas. Sin cargo ni compromiso: en 24 horas tenés una respuesta concreta.</p>
 
   <div class="links-contacto">
     <a class="link-c" href="mailto:contacto@mariofalcon.com.ar">
@@ -440,14 +580,21 @@ footer span { color: rgba(200,168,75,0.6); }
         <span class="link-c-val">contacto@mariofalcon.com.ar</span>
       </div>
     </a>
-    <a class="link-c" href="https://www.linkedin.com/in/mario-falc%C3%B3n" target="_blank">
+    <a class="link-c" href="https://wa.me/5491161148632" target="_blank" rel="noopener">
+      <span class="link-c-icon">💬</span>
+      <div>
+        <span class="link-c-label">WhatsApp</span>
+        <span class="link-c-val">+54 9 11 6114-8632</span>
+      </div>
+    </a>
+    <a class="link-c" href="https://www.linkedin.com/in/mariofalcon-riesgos" target="_blank" rel="noopener">
       <span class="link-c-icon">💼</span>
       <div>
         <span class="link-c-label">LinkedIn</span>
-        <span class="link-c-val">mario-falcón</span>
+        <span class="link-c-val">mariofalcon-riesgos</span>
       </div>
     </a>
-    <a class="link-c" href="https://instagram.com/mf_pas" target="_blank">
+    <a class="link-c" href="https://instagram.com/mf_pas" target="_blank" rel="noopener">
       <span class="link-c-icon">📸</span>
       <div>
         <span class="link-c-label">Instagram</span>
@@ -457,28 +604,58 @@ footer span { color: rgba(200,168,75,0.6); }
   </div>
 
   <div class="wa-box">
-    <h3>Consulta directa</h3>
-    <p class="wa-sub">Completá y te armo el mensaje listo para enviar.</p>
+    <h3>Pedí tu revisión técnica</h3>
+    <p class="wa-sub">Completá el formulario y te respondo por mail o WhatsApp.</p>
 
-    <div class="fg">
-      <label>Tu nombre o administración</label>
-      <input type="text" id="nombre" placeholder="Ej: Administración Sur / Juan Pérez">
-    </div>
-    <div class="fg">
-      <label>¿Qué necesitás asegurar?</label>
-      <select id="rubro">
-        <option value="Consorcio / Edificio">Consorcio / Edificio</option>
-        <option value="Comercio o Local">Comercio o Local</option>
-        <option value="PyME o Industria">PyME o Industria</option>
-        <option value="Automotor / Seguro personal">Automotor / Seguro personal</option>
-        <option value="Otro">Otro</option>
-      </select>
-    </div>
+    <form id="form-revision" action="https://formspree.io/f/mzezplrg" method="POST">
+      <input type="hidden" name="_subject" value="Nueva consulta desde mariofalcon.com.ar">
+      <input type="hidden" name="origen" id="origen" value="directo">
+      <div class="hp" aria-hidden="true"><label>No completar<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
-    <button class="btn-wa" onclick="enviarWA()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.112 1.523 5.838L.057 23.428a.75.75 0 0 0 .921.921l5.67-1.498A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.716 9.716 0 0 1-4.95-1.353l-.355-.21-3.664.968.983-3.595-.229-.368A9.716 9.716 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-      Enviar por WhatsApp
-    </button>
+      <div class="fg">
+        <label for="nombre">Nombre y empresa o administración</label>
+        <input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder="Ej: Juan Pérez / Administración Sur">
+      </div>
+      <div class="fg-row">
+        <div class="fg">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="nombre@empresa.com">
+        </div>
+        <div class="fg">
+          <label for="whatsapp">WhatsApp <span class="opt">(opcional)</span></label>
+          <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" placeholder="+54 9 11 ...">
+        </div>
+      </div>
+      <div class="fg-row">
+        <div class="fg">
+          <label for="rubro">¿Qué necesitás asegurar?</label>
+          <select id="rubro" name="rubro" required>
+            <option value="Consorcio">Consorcio</option>
+            <option value="Comercio">Comercio</option>
+            <option value="PyME de logística o transporte">PyME de logística o transporte</option>
+            <option value="Industria o taller">Industria o taller</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="vencimiento">Vencimiento de tu póliza</label>
+          <select id="vencimiento" name="vencimiento">
+            <option value="No sé / no tengo póliza">No sé / no tengo póliza</option>
+            <option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option>
+            <option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option>
+            <option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label for="mensaje">Contame tu caso <span class="opt">(opcional)</span></label>
+        <textarea id="mensaje" name="mensaje" placeholder="Ej: consorcio de 40 unidades, queremos revisar si las sumas están actualizadas."></textarea>
+      </div>
+
+      <button type="submit" class="btn-send" id="btn-send">Pedir revisión técnica</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="form-alt">¿Preferís escribir directo? <a href="https://wa.me/5491161148632" target="_blank" rel="noopener">Hablar por WhatsApp</a></p>
   </div>
 </section>
 
@@ -489,14 +666,44 @@ footer span { color: rgba(200,168,75,0.6); }
 </footer>
 
 <script>
-function enviarWA() {
-  const nombre = document.getElementById('nombre').value.trim() || 'Sin especificar';
-  const rubro = document.getElementById('rubro').value;
-  const msg = encodeURIComponent(
-    `Hola Mario, te escribo desde tu web.\n\nNombre / Administración: ${nombre}\nConsulta sobre: ${rubro}\n\n¿Podemos hablar?`
-  );
-  window.open(`https://wa.me/5491161148632?text=${msg}`, '_blank');
-}
+(function () {
+  // Guarda el origen de la visita (ej. ?utm_source=linkedin) para saber de dónde llegó la consulta
+  var params = new URLSearchParams(window.location.search);
+  var src = params.get('utm_source');
+  if (src) {
+    var parts = [src, params.get('utm_medium'), params.get('utm_campaign')].filter(Boolean);
+    document.getElementById('origen').value = parts.join(' / ');
+  }
+
+  var form = document.getElementById('form-revision');
+  var status = document.getElementById('form-status');
+  var btn = document.getElementById('btn-send');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = 'Enviando…';
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (res.ok) {
+        form.reset();
+        status.className = 'form-status ok';
+        status.textContent = 'Consulta enviada. Te respondo dentro de las próximas 24 horas.';
+      } else {
+        throw new Error('envio');
+      }
+    }).catch(function () {
+      status.className = 'form-status err';
+      status.textContent = 'No se pudo enviar. Escribime a contacto@mariofalcon.com.ar o por WhatsApp.';
+    }).finally(function () {
+      btn.disabled = false;
+    });
+  });
+})();
 </script>
 </body>
 </html>
