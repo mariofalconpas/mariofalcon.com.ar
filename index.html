@@ -24,6 +24,7 @@
 }
 
 html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 64px; }
 body {
   font-family: 'Red Hat Display', sans-serif;
   background: var(--navy);
@@ -271,6 +272,8 @@ nav {
   display: block; margin-bottom: 2px;
 }
 .link-c-val { font-weight: 600; font-size: 16px; }
+.link-c-hint { display: block; font-size: 13px; color: #4ADE80; margin-top: 2px; }
+.link-c-hint:empty { display: none; }
 
 /* FORM WA */
 .wa-box {
@@ -527,21 +530,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
       <div class="gal-visual" aria-hidden="true"><i style="height:40%"></i><i class="hl" style="height:95%"></i><i style="height:40%"></i><i class="hl" style="height:70%"></i></div>
       <span class="gal-tipo">Caso</span>
       <h3>Infraseguro detectado en un comercio</h3>
-      <p>Comercio en Bella Vista: la suma de Incendio Edificio no reflejaba el valor real. La corregimos antes de que ocurriera un siniestro.</p>
+      <p>Comercio de 67 m² en Bella Vista: la suma de Incendio Edificio no reflejaba el valor real. La corregí antes de que ocurriera un siniestro.</p>
     </div>
 
     <div class="gal-item">
       <div class="gal-visual" aria-hidden="true"><i style="height:30%"></i><i style="height:50%"></i><i style="height:70%"></i><i class="hl" style="height:95%"></i></div>
       <span class="gal-tipo">Caso</span>
       <h3>Actualización trimestral en un consorcio</h3>
-      <p>Consorcio en San Miguel: esquema de actualización trimestral de sumas aseguradas junto a la administración, para que la cobertura acompañe la inflación.</p>
+      <p>Consorcio de 28 unidades en San Miguel: actualización trimestral de la suma de Incendio Edificio, para que la cobertura acompañe la inflación hasta alcanzar el valor de reconstrucción.</p>
     </div>
 
     <div class="gal-item">
       <div class="gal-visual" aria-hidden="true"><i style="height:60%"></i><i class="hl" style="height:85%"></i><i style="height:55%"></i><i style="height:75%"></i></div>
       <span class="gal-tipo">Caso</span>
       <h3>Comparativo multipóliza para un consorcio</h3>
-      <p>Cuadro comparativo entre pólizas y aseguradoras con valuación de reposición, para decidir con números y no solo por precio.</p>
+      <p>Consorcio de 57 unidades: cuadro comparativo entre pólizas y aseguradoras con valuación de reposición, para decidir con números y no solo por precio.</p>
     </div>
 
     <a class="gal-item" href="https://consorcios.mariofalcon.com.ar" target="_blank" rel="noopener">
@@ -566,6 +569,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   </div>
 </section>
 
+<!-- NOTAS ALUMNI -->
+<section class="galeria" id="notas">
+  <div class="galeria-label">Charlas y aprendizajes</div>
+  <h2>Lo que me dejan las charlas<br>con especialistas, explicado simple.</h2>
+  <p class="contacto-sub" style="max-width:640px">Participo todos los meses de charlas del Think Tank Alumni (Comunidad de Analistas de Riesgos PAS de AAPAS). Acá comparto lo que me llevo de cada una, sin tecnicismos.</p>
+  <div class="gal-grid">
+
+    <a class="gal-item" href="notas/baterias-litio.html">
+      <span class="gal-tipo">Agosto 2026</span>
+      <h3>Baterías de litio: el riesgo que casi nadie tiene en cuenta</h3>
+      <p>Monopatines, herramientas, UPS y autos eléctricos: qué conviene saber y qué hacer en consorcios, comercios y empresas.</p>
+      <span class="gal-link">Leer la nota →</span>
+    </a>
+
+  </div>
+</section>
+
 <!-- CONTACTO -->
 <section class="contacto" id="contacto">
   <div class="contacto-label">Contacto</div>
@@ -573,11 +593,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   <p class="contacto-sub">Pedí una revisión técnica de tus coberturas. Sin cargo ni compromiso: en 24 horas tenés una respuesta concreta.</p>
 
   <div class="links-contacto">
-    <a class="link-c" href="mailto:contacto@mariofalcon.com.ar">
+    <a class="link-c" id="link-email" href="mailto:contacto@mariofalcon.com.ar">
       <span class="link-c-icon">✉️</span>
       <div>
         <span class="link-c-label">Email</span>
         <span class="link-c-val">contacto@mariofalcon.com.ar</span>
+        <span class="link-c-hint" id="email-hint" aria-live="polite"></span>
       </div>
     </a>
     <a class="link-c" href="https://wa.me/5491161148632" target="_blank" rel="noopener">
@@ -674,6 +695,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     var parts = [src, params.get('utm_medium'), params.get('utm_campaign')].filter(Boolean);
     document.getElementById('origen').value = parts.join(' / ');
   }
+
+  // Email: además de abrir el programa de correo, copia la dirección (en computadoras sin programa de correo configurado el mailto no hace nada)
+  var linkEmail = document.getElementById('link-email');
+  var hint = document.getElementById('email-hint');
+  linkEmail.addEventListener('click', function () {
+    var mail = 'contacto@mariofalcon.com.ar';
+    function ok() {
+      hint.textContent = 'Dirección copiada. Pegala en tu correo.';
+      setTimeout(function () { hint.textContent = ''; }, 4000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(mail).then(ok, function () {});
+    }
+  });
 
   var form = document.getElementById('form-revision');
   var status = document.getElementById('form-status');
