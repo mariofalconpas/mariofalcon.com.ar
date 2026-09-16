@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baterías de litio: el riesgo que casi nadie tiene en cuenta — Mario Falcón</title>
+<meta name="description" content="Qué hay que saber sobre las baterías de litio en consorcios, comercios y empresas, explicado sin tecnicismos. Lo que me dejó una charla del Think Tank Alumni.">
+<meta property="og:title" content="Baterías de litio: el riesgo que casi nadie tiene en cuenta">
+<meta property="og:description" content="Monopatines, herramientas, UPS y autos eléctricos: qué saber y qué hacer.">
+<meta property="og:type" content="article">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,500;0,700;0,900;1,700&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0B1C3F;
+  --gold: #C8A84B;
+  --gold-dim: rgba(200,168,75,0.15);
+  --white: #FFFFFF;
+  --off: #e8edf5;
+  --muted: rgba(255,255,255,0.5);
+  --border: rgba(200,168,75,0.2);
+}
+
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 64px; }
+body {
+  font-family: 'Red Hat Display', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 99;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; height: 56px;
+  background: rgba(11,28,63,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-id { display: flex; align-items: center; gap: 10px; }
+.nav-mono {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 14px; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.5px;
+}
+.nav-name { font-weight: 800; font-size: 17px; }
+.nav-btn {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 700; font-size: 15px;
+  background: var(--gold); color: var(--navy);
+  border: none; border-radius: 6px;
+  padding: 8px 18px; cursor: pointer;
+  text-decoration: none; letter-spacing: 0.2px;
+  transition: opacity .15s;
+}
+.nav-btn:hover { opacity: .85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: calc(100svh - 56px);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 72px 28px 56px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -120px; right: -80px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(200,168,75,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 13px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::after {
+  content: ''; flex: 1; max-width: 40px;
+  height: 1px; background: var(--gold); opacity: .4;
+}
+.hero h1 {
+  font-size: clamp(38px, 9vw, 64px);
+  font-weight: 900; line-height: 1.0;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+.hero h1 .line-gold { color: var(--gold); display: block; }
+.hero h1 .line-white { display: block; }
+.hero h1 .line-dim { color: rgba(255,255,255,0.35); display: block; font-style: italic; font-weight: 700; }
+
+.hero-body {
+  font-size: 18px; line-height: 1.65;
+  color: var(--muted); max-width: 480px;
+  margin-bottom: 40px;
+  border-left: 2px solid var(--gold);
+  padding-left: 16px;
+}
+
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.cta-main {
+  background: var(--gold); color: var(--navy);
+  font-weight: 800; font-size: 15px;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: transform .15s, opacity .15s;
+}
+.cta-main:hover { transform: translateY(-2px); opacity: .9; }
+
+.cta-ghost {
+  color: rgba(255,255,255,0.6); font-size: 14px;
+  padding: 15px 20px; border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: border-color .15s, color .15s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.cta-ghost:hover { border-color: rgba(255,255,255,0.35); color: var(--white); }
+
+/* ── CASOS ── */
+.casos { padding: 80px 28px; }
+.casos-label {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 40px;
+}
+
+.casos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.caso {
+  padding: 28px 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid transparent;
+  transition: background .2s;
+  cursor: default;
+}
+.caso:hover { background: rgba(200,168,75,0.06); }
+
+.caso-num {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; color: var(--gold);
+  letter-spacing: 1px; margin-bottom: 12px;
+}
+.caso h3 {
+  font-size: 18px; font-weight: 800;
+  margin-bottom: 8px; line-height: 1.2;
+}
+.caso p {
+  font-size: 15px; color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ── DIFERENCIAL ── */
+.diferencial {
+  margin: 0 28px;
+  background: var(--gold);
+  border-radius: 16px;
+  padding: 40px 28px;
+  color: var(--navy);
+}
+.dif-tag {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; opacity: .6;
+  margin-bottom: 16px;
+}
+.diferencial blockquote {
+  font-size: clamp(20px, 5vw, 28px);
+  font-weight: 900; line-height: 1.2;
+  letter-spacing: -0.5px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.diferencial p {
+  font-size: 16px; line-height: 1.6;
+  opacity: .75; max-width: 480px;
+}
+
+/* ── MÉTODO ── */
+.metodo { padding: 80px 28px; }
+.metodo-header {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 40px;
+}
+.metodo h2 {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 900; letter-spacing: -0.8px;
+  margin-bottom: 40px; line-height: 1.15;
+}
+
+.pasos { display: flex; flex-direction: column; gap: 1px; }
+
+.paso {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  align-items: start;
+}
+.paso:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+.paso-n {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 28px; font-weight: 500;
+  color: var(--gold); opacity: .35;
+  line-height: 1; padding-top: 4px;
+  letter-spacing: -1px;
+}
+.paso h3 {
+  font-size: 19px; font-weight: 800;
+  margin-bottom: 6px;
+}
+.paso p { font-size: 16px; color: var(--muted); line-height: 1.55; }
+
+/* ── CONTACTO ── */
+.contacto { padding: 80px 28px 40px; }
+.contacto-label {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px;
+}
+.contacto h2 {
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 900; letter-spacing: -1px;
+  margin-bottom: 8px; line-height: 1.1;
+}
+.contacto-sub {
+  font-size: 17px; color: var(--muted);
+  margin-bottom: 36px; line-height: 1.5;
+}
+
+.links-contacto {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 36px;
+}
+.link-c {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none; color: var(--white);
+  font-size: 14px;
+  transition: background .15s, border-color .15s;
+}
+.link-c:hover { background: rgba(200,168,75,0.08); border-color: rgba(200,168,75,0.4); }
+.link-c-icon { font-size: 18px; width: 24px; text-align: center; }
+.link-c-label {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 2px;
+}
+.link-c-val { font-weight: 600; font-size: 16px; }
+.link-c-hint { display: block; font-size: 13px; color: #4ADE80; margin-top: 2px; }
+.link-c-hint:empty { display: none; }
+
+/* FORM WA */
+.wa-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px;
+}
+.wa-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+.wa-box .wa-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+
+.fg { margin-bottom: 14px; }
+.fg label {
+  display: block;
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 7px;
+}
+.fg input, .fg select {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 14px 16px;
+  color: var(--white); font-size: 17px;
+  font-family: 'Red Hat Display', sans-serif;
+  outline: none; appearance: none;
+  transition: border-color .2s;
+}
+.fg input:focus, .fg select:focus { border-color: var(--gold); }
+.fg input::placeholder { color: rgba(255,255,255,0.25); }
+.fg select option { background: #0B1C3F; }
+
+.btn-wa {
+  width: 100%; margin-top: 6px;
+  background: #22C55E; color: white;
+  border: none; border-radius: 10px;
+  padding: 18px; font-size: 18px; font-weight: 800;
+  font-family: 'Red Hat Display', sans-serif;
+  cursor: pointer; letter-spacing: .1px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: background .15s, transform .15s;
+}
+.btn-wa:hover { background: #16a34a; transform: translateY(-1px); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 13px; letter-spacing: .5px;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.8;
+}
+footer span { color: rgba(200,168,75,0.6); }
+
+/* ── GALERÍA ── */
+.galeria { padding: 0 28px 80px; }
+.galeria-label {
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px;
+}
+.galeria h2 {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 900; letter-spacing: -0.8px;
+  margin-bottom: 36px; line-height: 1.15;
+}
+.gal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.gal-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  text-decoration: none; color: var(--white);
+  transition: background .2s, border-color .2s;
+}
+a.gal-item:hover { background: rgba(200,168,75,0.06); border-color: rgba(200,168,75,0.45); }
+.gal-tipo {
+  align-self: flex-start;
+  font-family: 'Red Hat Mono', monospace;
+  font-size: 12px; color: var(--navy);
+  background: var(--gold); border-radius: 4px;
+  padding: 3px 8px;
+}
+.gal-item h3 { font-size: 18px; font-weight: 800; line-height: 1.25; }
+.gal-item p { font-size: 15px; color: var(--muted); line-height: 1.55; }
+.gal-link { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--gold); }
+.gal-visual { display: flex; gap: 6px; align-items: flex-end; height: 44px; margin-bottom: 4px; }
+.gal-visual i { display: block; width: 14px; border-radius: 2px; background: rgba(200,168,75,0.35); }
+.gal-visual i.hl { background: var(--gold); }
+
+/* FORM MAIL */
+.fg textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 14px 16px;
+  color: var(--white); font-size: 17px;
+  font-family: 'Red Hat Display', sans-serif;
+  outline: none; resize: vertical; min-height: 96px;
+  transition: border-color .2s;
+}
+.fg textarea:focus { border-color: var(--gold); }
+.fg textarea::placeholder { color: rgba(255,255,255,0.25); }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.fg .opt { text-transform: none; letter-spacing: 0; color: rgba(255,255,255,0.4); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.btn-send {
+  width: 100%; margin-top: 6px;
+  background: var(--gold); color: var(--navy);
+  border: none; border-radius: 10px;
+  padding: 18px; font-size: 18px; font-weight: 800;
+  font-family: 'Red Hat Display', sans-serif;
+  cursor: pointer;
+  transition: opacity .15s, transform .15s;
+}
+.btn-send:hover { opacity: .9; transform: translateY(-1px); }
+.btn-send:disabled { opacity: .5; cursor: default; transform: none; }
+.form-status { margin-top: 14px; font-size: 15px; line-height: 1.5; min-height: 1em; }
+.form-status.ok { color: #4ADE80; }
+.form-status.err { color: #F87171; }
+.form-alt { margin-top: 16px; font-size: 14px; color: var(--muted); }
+.form-alt a { color: var(--gold); font-weight: 700; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 500px) {
+  .casos-grid { grid-template-columns: 1fr; }
+  .hero h1 { letter-spacing: -1.5px; }
+  .fg-row { grid-template-columns: 1fr; }
+  .nav-btn { padding: 8px 12px; font-size: 14px; }
+}
+
+/* ── NOTA ── */
+.nota { max-width: 760px; margin: 0 auto; padding: 56px 28px 72px; }
+.nota-meta { font-family: 'Red Hat Mono', monospace; font-size: 13px; color: var(--gold); letter-spacing: .5px; margin-bottom: 18px; }
+.nota h1 { font-size: clamp(32px, 7vw, 52px); font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 20px; }
+.nota .bajada { font-size: 20px; line-height: 1.55; color: rgba(255,255,255,0.75); border-left: 2px solid var(--gold); padding-left: 16px; margin-bottom: 40px; }
+.nota h2 { font-size: clamp(22px, 4.5vw, 28px); font-weight: 900; letter-spacing: -.5px; margin: 48px 0 16px; line-height: 1.15; }
+.nota p { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.82); margin-bottom: 16px; }
+.nota strong { color: var(--white); }
+.nota ul, .nota ol { padding-left: 22px; margin-bottom: 16px; }
+.nota li { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.82); margin-bottom: 10px; }
+.clave { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; display: grid; grid-template-columns: 48px 1fr; gap: 16px; }
+.clave-n { font-family: 'Red Hat Mono', monospace; font-size: 26px; color: var(--gold); opacity: .5; line-height: 1.2; }
+.clave h3 { font-size: 19px; font-weight: 800; margin-bottom: 6px; }
+.clave p { margin: 0; font-size: 17px; }
+.caja { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 24px 0; }
+.caja h3 { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--gold); }
+.orador { display: grid; gap: 6px; background: var(--gold); color: var(--navy); border-radius: 14px; padding: 24px; margin: 40px 0; }
+.orador p { color: var(--navy); font-size: 16px; margin: 0; opacity: .85; }
+.orador .t { font-weight: 900; font-size: 20px; opacity: 1; }
+.cierre { margin-top: 56px; padding: 32px 24px; border: 1px solid var(--border); border-radius: 14px; text-align: center; }
+.cierre p { color: rgba(255,255,255,0.75); }
+.volver { color: var(--gold); text-decoration: none; font-weight: 700; font-size: 15px; }
+.fuente { font-size: 14px !important; color: rgba(255,255,255,0.45) !important; }
+@media (max-width: 500px) { .clave { grid-template-columns: 36px 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-id">
+    <a href="../" style="color:inherit;text-decoration:none">
+      <div class="nav-name">Mario Falcón</div>
+      <div class="nav-mono">PAS · SSN 98319</div>
+    </a>
+  </div>
+  <a href="../#contacto" class="nav-btn">Pedir revisión técnica</a>
+</nav>
+
+<article class="nota">
+  <a class="volver" href="../#notas">← Charlas y aprendizajes</a>
+  <div class="nota-meta" style="margin-top:24px">Por Mario Falcón · Agosto de 2026</div>
+  <h1>Baterías de litio: el riesgo que casi nadie tiene en cuenta</h1>
+  <p class="bajada">Monopatines, bicicletas eléctricas, herramientas a batería, UPS y autos eléctricos ya están en casi todos los consorcios, comercios y empresas. No se incendian seguido, pero cuando pasa, el daño es grave.</p>
+  <p>Hace poco participé de una charla del Think Tank Alumni con un especialista en emergencias con baterías de litio. Me quedé con varias ideas que cambian la forma de mirar este riesgo. Las comparto acá, sin tecnicismos.</p>
+
+  <h2>Cinco cosas que conviene saber</h2>
+
+  <div class="clave">
+    <div class="clave-n">01</div>
+    <div>
+      <h3>No es un incendio común</h3>
+      <p>Además del fuego, la batería libera gases tóxicos y gases que pueden explotar. Y sigue teniendo energía adentro aunque se corte la luz: apagar la llama no termina el problema.</p>
+    </div>
+  </div>
+  <div class="clave">
+    <div class="clave-n">02</div>
+    <div>
+      <h3>Un matafuego no lo resuelve</h3>
+      <p>Apagar un auto eléctrico requiere miles de litros de agua y bomberos con equipos de respiración. Acercarse con un matafuego expone a la persona a los gases. Lo correcto es evacuar, alejarse y llamar a bomberos avisando que hay baterías.</p>
+    </div>
+  </div>
+  <div class="clave">
+    <div class="clave-n">03</div>
+    <div>
+      <h3>El daño puede aparecer días después</h3>
+      <p>Algunos de esos gases afectan la salud horas o días más tarde. Una persona expuesta en una cochera puede sentir los síntomas cuando el incendio ya pasó, y eso puede terminar en un reclamo contra el consorcio o la empresa.</p>
+    </div>
+  </div>
+  <div class="clave">
+    <div class="clave-n">04</div>
+    <div>
+      <h3>Casi siempre avisa antes</h3>
+      <p>Una batería inflada, una carcasa deformada, un equipo que calienta de más, olor raro o un siseo son señales para actuar. Es muy raro que el problema aparezca de golpe.</p>
+    </div>
+  </div>
+  <div class="clave" style="border-bottom:1px solid rgba(255,255,255,0.08)">
+    <div class="clave-n">05</div>
+    <div>
+      <h3>Muchas veces nadie sabe que las tiene</h3>
+      <p>No porque alguien lo oculte: simplemente nadie lo relevó. Y lo que no se conoce, no está en la póliza.</p>
+    </div>
+  </div>
+
+  <h2>Dos casos argentinos</h2>
+  <p><strong>Un supermercado con 80 sucursales</strong> consultó qué matafuego comprar para sus autoelevadores eléctricos. A medida que avanzó la conversación aparecieron las UPS de cada sucursal, cientos de baterías guardadas sin control, stock de repuesto junto al servidor principal y una batería ya inflada guardada en un tacho. En veinte minutos, la empresa descubrió un riesgo que no figuraba en ningún lado.</p>
+  <p><strong>Una ferretería industrial del conurbano</strong> recibió una partida de herramientas a batería, la dejó en el depósito y cerró. De madrugada, una batería probablemente dañada en el transporte inició un incendio que destruyó el 80 % del local.</p>
+
+  <h2>Lo que muestran los datos</h2>
+  <p>En el Reino Unido, los bomberos atendieron <strong>1.760 incendios vinculados a baterías de litio en 2025</strong>, casi cinco por día, un 147 % más que en 2022. Casi la mitad fueron en viviendas.</p>
+  <p>Un dato para no exagerar: en ese mismo período, los incendios de autos eléctricos crecieron menos que la cantidad de autos eléctricos en circulación. El problema no es que se incendien más, sino que <strong>cuando se incendian, son más difíciles de controlar</strong>.</p>
+  <p>En Corea del Sur, en 2024, un incendio en una fábrica de baterías de litio causó la muerte de 23 trabajadores. En 2025 la justicia condenó a su director a 15 años de prisión. Un siniestro así no termina solo en el pago de un seguro: puede terminar en responsabilidad penal de quienes dirigen la empresa.</p>
+  <p class="fuente">Fuentes: QBE Insurance, sobre datos de 42 servicios de bomberos del Reino Unido (2026); cobertura periodística y judicial del incendio de Aricell, Hwaseong (2024–2025).</p>
+
+  <h2>Qué podés hacer hoy</h2>
+
+  <div class="caja">
+    <h3>En tu consorcio</h3>
+    <ul>
+      <li>Que los cargadores de las cocheras los instale un electricista matriculado, con circuito propio.</li>
+      <li>Ubicar los autos eléctricos en un sector definido, no dispersos entre los demás.</li>
+      <li>Evaluar en el reglamento interno un límite de carga durante la noche: es una medida sin costo.</li>
+      <li>Consultar con un especialista la detección de temperatura a nivel del piso y la ventilación de la cochera.</li>
+      <li>Que monopatines y bicicletas no se carguen en pasillos ni palieres.</li>
+    </ul>
+  </div>
+
+  <div class="caja">
+    <h3>En tu comercio o empresa</h3>
+    <ul>
+      <li>Guardar los equipos y el stock con batería en un sector separado del resto de la mercadería.</li>
+      <li>Que ese sector no obstruya salidas de emergencia.</li>
+      <li>Revisar las UPS y notebooks: si alguna batería está inflada, retirarla y no guardarla junto a otras.</li>
+      <li>No dejar equipos cargando toda la noche sin supervisión.</li>
+      <li>No tirar baterías a la basura común.</li>
+    </ul>
+  </div>
+
+  <h2>Siete preguntas para saber si tenés este riesgo</h2>
+  <ol>
+    <li>¿Qué equipos con batería hay? Monopatines, bicicletas, herramientas, autoelevadores, UPS, autos.</li>
+    <li>¿Dónde se cargan?</li>
+    <li>¿Cuándo se cargan? ¿De noche, sin nadie presente?</li>
+    <li>¿El cargador y la batería son los originales?</li>
+    <li>¿Alguno tuvo golpes, se mojó, se reparó o calentó de más?</li>
+    <li>¿La carga bloquea alguna salida?</li>
+    <li>¿Cómo se desechan las baterías viejas?</li>
+  </ol>
+  <p>Si alguna respuesta te genera dudas, vale la pena revisarlo, y revisar si tu póliza refleja ese riesgo.</p>
+
+  <p class="fuente">Mario Falcón, Productor Asesor de Seguros, matrícula SSN N° 98319. Integrante del Think Tank Alumni (Comunidad de Analistas de Riesgos PAS de AAPAS). Contenido informativo: no reemplaza el asesoramiento de un profesional de seguridad ni las indicaciones de bomberos.</p>
+
+  <div class="cierre">
+    <h2 style="margin-top:0">¿Tu consorcio o tu empresa tiene este riesgo?</h2>
+    <p>Lo revisamos juntos, sin cargo ni compromiso.</p>
+    <a href="../#contacto" class="cta-main" style="margin-top:8px">Pedir revisión técnica</a>
+  </div>
+</article>
+
+<footer>
+  <span>Mario Falcón</span> · Productor Asesor de Seguros<br>
+  Matrícula SSN Nº 98319 · Buenos Aires
+</footer>
+</body>
+</html>
