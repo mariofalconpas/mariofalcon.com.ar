@@ -18,262 +18,262 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy: #0B1C3F;
-  --gold: #C8A84B;
-  --gold-dim: rgba(200,168,75,0.15);
-  --white: #FFFFFF;
-  --off: #e8edf5;
-  --muted: rgba(255,255,255,0.5);
-  --border: rgba(200,168,75,0.2);
+--navy: #0B1C3F;
+--gold: #C8A84B;
+--gold-dim: rgba(200,168,75,0.15);
+--white: #FFFFFF;
+--off: #e8edf5;
+--muted: rgba(255,255,255,0.5);
+--border: rgba(200,168,75,0.2);
 }
 
 html { scroll-behavior: smooth; }
 section[id] { scroll-margin-top: 64px; }
 body {
-  font-family: 'Red Hat Display', sans-serif;
-  background: var(--navy);
-  color: var(--white);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+font-family: 'Red Hat Display', sans-serif;
+background: var(--navy);
+color: var(--white);
+-webkit-font-smoothing: antialiased;
+overflow-x: hidden;
 }
 
 /* ── NAV ── */
 nav {
-  position: sticky; top: 0; z-index: 99;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 28px; height: 56px;
-  background: rgba(11,28,63,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+position: sticky; top: 0; z-index: 99;
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 28px; height: 56px;
+background: rgba(11,28,63,0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--border);
 }
 .nav-id { display: flex; align-items: center; gap: 10px; }
 .nav-mono {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 14px; font-weight: 500;
-  color: var(--gold); letter-spacing: 0.5px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 14px; font-weight: 500;
+color: var(--gold); letter-spacing: 0.5px;
 }
 .nav-name { font-weight: 800; font-size: 17px; }
 .nav-btn {
-  font-family: 'Red Hat Display', sans-serif;
-  font-weight: 700; font-size: 15px;
-  background: var(--gold); color: var(--navy);
-  border: none; border-radius: 6px;
-  padding: 8px 18px; cursor: pointer;
-  text-decoration: none; letter-spacing: 0.2px;
-  transition: opacity .15s;
+font-family: 'Red Hat Display', sans-serif;
+font-weight: 700; font-size: 15px;
+background: var(--gold); color: var(--navy);
+border: none; border-radius: 6px;
+padding: 8px 18px; cursor: pointer;
+text-decoration: none; letter-spacing: 0.2px;
+transition: opacity .15s;
 }
 .nav-btn:hover { opacity: .85; }
 
 /* ── HERO ── */
 .hero {
-  min-height: calc(100svh - 56px);
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 72px 28px 56px;
-  position: relative; overflow: hidden;
+min-height: calc(100svh - 56px);
+display: flex; flex-direction: column; justify-content: center;
+padding: 72px 28px 56px;
+position: relative; overflow: hidden;
 }
 .hero::before {
-  content: '';
-  position: absolute; top: -120px; right: -80px;
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(200,168,75,0.08) 0%, transparent 70%);
-  pointer-events: none;
+content: '';
+position: absolute; top: -120px; right: -80px;
+width: 420px; height: 420px;
+background: radial-gradient(circle, rgba(200,168,75,0.08) 0%, transparent 70%);
+pointer-events: none;
 }
 .hero-eyebrow {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 13px; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 24px;
-  display: flex; align-items: center; gap: 10px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 13px; letter-spacing: 2.5px;
+text-transform: uppercase; color: var(--gold);
+margin-bottom: 24px;
+display: flex; align-items: center; gap: 10px;
 }
 .hero-eyebrow::after {
-  content: ''; flex: 1; max-width: 40px;
-  height: 1px; background: var(--gold); opacity: .4;
+content: ''; flex: 1; max-width: 40px;
+height: 1px; background: var(--gold); opacity: .4;
 }
 .hero h1 {
-  font-size: clamp(38px, 9vw, 64px);
-  font-weight: 900; line-height: 1.0;
-  letter-spacing: -2px;
-  margin-bottom: 32px;
+font-size: clamp(38px, 9vw, 64px);
+font-weight: 900; line-height: 1.0;
+letter-spacing: -2px;
+margin-bottom: 32px;
 }
 .hero h1 .line-gold { color: var(--gold); display: block; }
 .hero h1 .line-white { display: block; }
 .hero h1 .line-dim { color: rgba(255,255,255,0.35); display: block; font-style: italic; font-weight: 700; }
 
 .hero-body {
-  font-size: 18px; line-height: 1.65;
-  color: var(--muted); max-width: 480px;
-  margin-bottom: 40px;
-  border-left: 2px solid var(--gold);
-  padding-left: 16px;
+font-size: 18px; line-height: 1.65;
+color: var(--muted); max-width: 480px;
+margin-bottom: 40px;
+border-left: 2px solid var(--gold);
+padding-left: 16px;
 }
 
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .cta-main {
-  background: var(--gold); color: var(--navy);
-  font-weight: 800; font-size: 15px;
-  padding: 15px 28px; border-radius: 8px;
-  text-decoration: none;
-  display: inline-flex; align-items: center; gap: 8px;
-  transition: transform .15s, opacity .15s;
+background: var(--gold); color: var(--navy);
+font-weight: 800; font-size: 15px;
+padding: 15px 28px; border-radius: 8px;
+text-decoration: none;
+display: inline-flex; align-items: center; gap: 8px;
+transition: transform .15s, opacity .15s;
 }
 .cta-main:hover { transform: translateY(-2px); opacity: .9; }
 
 .cta-ghost {
-  color: rgba(255,255,255,0.6); font-size: 14px;
-  padding: 15px 20px; border-radius: 8px;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.12);
-  transition: border-color .15s, color .15s;
-  display: inline-flex; align-items: center; gap: 6px;
+color: rgba(255,255,255,0.6); font-size: 14px;
+padding: 15px 20px; border-radius: 8px;
+text-decoration: none;
+border: 1px solid rgba(255,255,255,0.12);
+transition: border-color .15s, color .15s;
+display: inline-flex; align-items: center; gap: 6px;
 }
 .cta-ghost:hover { border-color: rgba(255,255,255,0.35); color: var(--white); }
 
 /* ── CASOS ── */
 .casos { padding: 80px 28px; }
 .casos-label {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 12px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 40px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 12px; letter-spacing: 3px;
+text-transform: uppercase; color: var(--gold);
+margin-bottom: 40px;
 }
 
 .casos-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2px;
+border: 1px solid var(--border);
+border-radius: 14px;
+overflow: hidden;
 }
 
 .caso {
-  padding: 28px 24px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid transparent;
-  transition: background .2s;
-  cursor: default;
+padding: 28px 24px;
+background: rgba(255,255,255,0.02);
+border: 1px solid transparent;
+transition: background .2s;
+cursor: default;
 }
 .caso:hover { background: rgba(200,168,75,0.06); }
 
 .caso-num {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 12px; color: var(--gold);
-  letter-spacing: 1px; margin-bottom: 12px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 12px; color: var(--gold);
+letter-spacing: 1px; margin-bottom: 12px;
 }
 .caso h3 {
-  font-size: 18px; font-weight: 800;
-  margin-bottom: 8px; line-height: 1.2;
+font-size: 18px; font-weight: 800;
+margin-bottom: 8px; line-height: 1.2;
 }
 .caso p {
-  font-size: 15px; color: var(--muted);
-  line-height: 1.55;
+font-size: 15px; color: var(--muted);
+line-height: 1.55;
 }
 
 /* ── DIFERENCIAL ── */
 .diferencial {
-  margin: 0 28px;
-  background: var(--gold);
-  border-radius: 16px;
-  padding: 40px 28px;
-  color: var(--navy);
+margin: 0 28px;
+background: var(--gold);
+border-radius: 16px;
+padding: 40px 28px;
+color: var(--navy);
 }
 .dif-tag {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 12px; letter-spacing: 2px;
-  text-transform: uppercase; opacity: .6;
-  margin-bottom: 16px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 12px; letter-spacing: 2px;
+text-transform: uppercase; opacity: .6;
+margin-bottom: 16px;
 }
 .diferencial blockquote {
-  font-size: clamp(20px, 5vw, 28px);
-  font-weight: 900; line-height: 1.2;
-  letter-spacing: -0.5px;
-  font-style: italic;
-  margin-bottom: 20px;
+font-size: clamp(20px, 5vw, 28px);
+font-weight: 900; line-height: 1.2;
+letter-spacing: -0.5px;
+font-style: italic;
+margin-bottom: 20px;
 }
 .diferencial p {
-  font-size: 16px; line-height: 1.6;
-  opacity: .75; max-width: 480px;
+font-size: 16px; line-height: 1.6;
+opacity: .75; max-width: 480px;
 }
 
 /* ── MÉTODO ── */
 .metodo { padding: 80px 28px; }
 .metodo-header {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 12px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 40px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 12px; letter-spacing: 3px;
+text-transform: uppercase; color: var(--gold);
+margin-bottom: 40px;
 }
 .metodo h2 {
-  font-size: clamp(24px, 5vw, 32px);
-  font-weight: 900; letter-spacing: -0.8px;
-  margin-bottom: 40px; line-height: 1.15;
+font-size: clamp(24px, 5vw, 32px);
+font-weight: 900; letter-spacing: -0.8px;
+margin-bottom: 40px; line-height: 1.15;
 }
 
 .pasos { display: flex; flex-direction: column; gap: 1px; }
 
 .paso {
-  display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 20px;
-  padding: 24px 0;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  align-items: start;
+display: grid;
+grid-template-columns: 48px 1fr;
+gap: 20px;
+padding: 24px 0;
+border-top: 1px solid rgba(255,255,255,0.07);
+align-items: start;
 }
 .paso:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
 
 .paso-n {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 28px; font-weight: 500;
-  color: var(--gold); opacity: .35;
-  line-height: 1; padding-top: 4px;
-  letter-spacing: -1px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 28px; font-weight: 500;
+color: var(--gold); opacity: .35;
+line-height: 1; padding-top: 4px;
+letter-spacing: -1px;
 }
 .paso h3 {
-  font-size: 19px; font-weight: 800;
-  margin-bottom: 6px;
+font-size: 19px; font-weight: 800;
+margin-bottom: 6px;
 }
 .paso p { font-size: 16px; color: var(--muted); line-height: 1.55; }
 
 /* ── CONTACTO ── */
 .contacto { padding: 80px 28px 40px; }
 .contacto-label {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 12px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 16px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 12px; letter-spacing: 3px;
+text-transform: uppercase; color: var(--gold);
+margin-bottom: 16px;
 }
 .contacto h2 {
-  font-size: clamp(26px, 6vw, 38px);
-  font-weight: 900; letter-spacing: -1px;
-  margin-bottom: 8px; line-height: 1.1;
+font-size: clamp(26px, 6vw, 38px);
+font-weight: 900; letter-spacing: -1px;
+margin-bottom: 8px; line-height: 1.1;
 }
 .contacto-sub {
-  font-size: 17px; color: var(--muted);
-  margin-bottom: 36px; line-height: 1.5;
+font-size: 17px; color: var(--muted);
+margin-bottom: 36px; line-height: 1.5;
 }
 
 .links-contacto {
-  display: flex; flex-direction: column; gap: 10px;
-  margin-bottom: 36px;
+display: flex; flex-direction: column; gap: 10px;
+margin-bottom: 36px;
 }
 .link-c {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 18px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  text-decoration: none; color: var(--white);
-  font-size: 14px;
-  transition: background .15s, border-color .15s;
+display: flex; align-items: center; gap: 14px;
+padding: 14px 18px;
+background: rgba(255,255,255,0.03);
+border: 1px solid var(--border);
+border-radius: 10px;
+text-decoration: none; color: var(--white);
+font-size: 14px;
+transition: background .15s, border-color .15s;
 }
 .link-c:hover { background: rgba(200,168,75,0.08); border-color: rgba(200,168,75,0.4); }
 .link-c-icon { font-size: 18px; width: 24px; text-align: center; }
 .link-c-label {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 11px; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--gold);
-  display: block; margin-bottom: 2px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 11px; letter-spacing: 1.5px;
+text-transform: uppercase; color: var(--gold);
+display: block; margin-bottom: 2px;
 }
 .link-c-val { font-weight: 600; font-size: 16px; }
 .link-c-hint { display: block; font-size: 13px; color: #4ADE80; margin-top: 2px; }
@@ -281,93 +281,93 @@ nav {
 
 /* FORM WA */
 .wa-box {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border);
-  border-radius: 14px; padding: 28px;
+background: rgba(255,255,255,0.03);
+border: 1px solid var(--border);
+border-radius: 14px; padding: 28px;
 }
 .wa-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
 .wa-box .wa-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
 
 .fg { margin-bottom: 14px; }
 .fg label {
-  display: block;
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 11px; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 7px;
+display: block;
+font-family: 'Red Hat Mono', monospace;
+font-size: 11px; letter-spacing: 1.5px;
+text-transform: uppercase; color: var(--gold);
+margin-bottom: 7px;
 }
 .fg input, .fg select {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px; padding: 14px 16px;
-  color: var(--white); font-size: 17px;
-  font-family: 'Red Hat Display', sans-serif;
-  outline: none; appearance: none;
-  transition: border-color .2s;
+width: 100%;
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 8px; padding: 14px 16px;
+color: var(--white); font-size: 17px;
+font-family: 'Red Hat Display', sans-serif;
+outline: none; appearance: none;
+transition: border-color .2s;
 }
 .fg input:focus, .fg select:focus { border-color: var(--gold); }
 .fg input::placeholder { color: rgba(255,255,255,0.25); }
 .fg select option { background: #0B1C3F; }
 
 .btn-wa {
-  width: 100%; margin-top: 6px;
-  background: #22C55E; color: white;
-  border: none; border-radius: 10px;
-  padding: 18px; font-size: 18px; font-weight: 800;
-  font-family: 'Red Hat Display', sans-serif;
-  cursor: pointer; letter-spacing: .1px;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  transition: background .15s, transform .15s;
+width: 100%; margin-top: 6px;
+background: #22C55E; color: white;
+border: none; border-radius: 10px;
+padding: 18px; font-size: 18px; font-weight: 800;
+font-family: 'Red Hat Display', sans-serif;
+cursor: pointer; letter-spacing: .1px;
+display: flex; align-items: center; justify-content: center; gap: 10px;
+transition: background .15s, transform .15s;
 }
 .btn-wa:hover { background: #16a34a; transform: translateY(-1px); }
 
 /* ── FOOTER ── */
 footer {
-  padding: 28px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  text-align: center;
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 13px; letter-spacing: .5px;
-  color: rgba(255,255,255,0.25);
-  line-height: 1.8;
+padding: 28px;
+border-top: 1px solid rgba(255,255,255,0.06);
+text-align: center;
+font-family: 'Red Hat Mono', monospace;
+font-size: 13px; letter-spacing: .5px;
+color: rgba(255,255,255,0.25);
+line-height: 1.8;
 }
 footer span { color: rgba(200,168,75,0.6); }
 
 /* ── GALERÍA ── */
 .galeria { padding: 0 28px 80px; }
 .galeria-label {
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 12px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 16px;
+font-family: 'Red Hat Mono', monospace;
+font-size: 12px; letter-spacing: 3px;
+text-transform: uppercase; color: var(--gold);
+margin-bottom: 16px;
 }
 .galeria h2 {
-  font-size: clamp(24px, 5vw, 32px);
-  font-weight: 900; letter-spacing: -0.8px;
-  margin-bottom: 36px; line-height: 1.15;
+font-size: clamp(24px, 5vw, 32px);
+font-weight: 900; letter-spacing: -0.8px;
+margin-bottom: 36px; line-height: 1.15;
 }
 .gal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 16px;
 }
 .gal-item {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px;
-  display: flex; flex-direction: column; gap: 10px;
-  text-decoration: none; color: var(--white);
-  transition: background .2s, border-color .2s;
+background: rgba(255,255,255,0.03);
+border: 1px solid var(--border);
+border-radius: 14px;
+padding: 24px;
+display: flex; flex-direction: column; gap: 10px;
+text-decoration: none; color: var(--white);
+transition: background .2s, border-color .2s;
 }
 a.gal-item:hover { background: rgba(200,168,75,0.06); border-color: rgba(200,168,75,0.45); }
 .gal-tipo {
-  align-self: flex-start;
-  font-family: 'Red Hat Mono', monospace;
-  font-size: 12px; color: var(--navy);
-  background: var(--gold); border-radius: 4px;
-  padding: 3px 8px;
+align-self: flex-start;
+font-family: 'Red Hat Mono', monospace;
+font-size: 12px; color: var(--navy);
+background: var(--gold); border-radius: 4px;
+padding: 3px 8px;
 }
 .gal-item h3 { font-size: 18px; font-weight: 800; line-height: 1.25; }
 .gal-item p { font-size: 15px; color: var(--muted); line-height: 1.55; }
@@ -378,14 +378,14 @@ a.gal-item:hover { background: rgba(200,168,75,0.06); border-color: rgba(200,168
 
 /* FORM MAIL */
 .fg textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px; padding: 14px 16px;
-  color: var(--white); font-size: 17px;
-  font-family: 'Red Hat Display', sans-serif;
-  outline: none; resize: vertical; min-height: 96px;
-  transition: border-color .2s;
+width: 100%;
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 8px; padding: 14px 16px;
+color: var(--white); font-size: 17px;
+font-family: 'Red Hat Display', sans-serif;
+outline: none; resize: vertical; min-height: 96px;
+transition: border-color .2s;
 }
 .fg textarea:focus { border-color: var(--gold); }
 .fg textarea::placeholder { color: rgba(255,255,255,0.25); }
@@ -393,13 +393,13 @@ a.gal-item:hover { background: rgba(200,168,75,0.06); border-color: rgba(200,168
 .fg .opt { text-transform: none; letter-spacing: 0; color: rgba(255,255,255,0.4); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .btn-send {
-  width: 100%; margin-top: 6px;
-  background: var(--gold); color: var(--navy);
-  border: none; border-radius: 10px;
-  padding: 18px; font-size: 18px; font-weight: 800;
-  font-family: 'Red Hat Display', sans-serif;
-  cursor: pointer;
-  transition: opacity .15s, transform .15s;
+width: 100%; margin-top: 6px;
+background: var(--gold); color: var(--navy);
+border: none; border-radius: 10px;
+padding: 18px; font-size: 18px; font-weight: 800;
+font-family: 'Red Hat Display', sans-serif;
+cursor: pointer;
+transition: opacity .15s, transform .15s;
 }
 .btn-send:hover { opacity: .9; transform: translateY(-1px); }
 .btn-send:disabled { opacity: .5; cursor: default; transform: none; }
@@ -412,10 +412,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ── RESPONSIVE ── */
 @media (max-width: 500px) {
-  .casos-grid { grid-template-columns: 1fr; }
-  .hero h1 { letter-spacing: -1.5px; }
-  .fg-row { grid-template-columns: 1fr; }
-  .nav-btn { padding: 8px 12px; font-size: 14px; }
+.casos-grid { grid-template-columns: 1fr; }
+.hero h1 { letter-spacing: -1.5px; }
+.fg-row { grid-template-columns: 1fr; }
+.nav-btn { padding: 8px 12px; font-size: 14px; }
 }
 </style>
 </head>
@@ -423,325 +423,357 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 <!-- NAV -->
 <nav>
-  <div class="nav-id">
-    <div>
-      <div class="nav-name">Mario Falcón</div>
-      <div class="nav-mono">PAS · SSN 98319</div>
-    </div>
-  </div>
-  <a href="#contacto" class="nav-btn">Pedir revisión técnica</a>
+<div class="nav-id">
+<div>
+<div class="nav-name">Mario Falcón</div>
+<div class="nav-mono">PAS · SSN 98319</div>
+</div>
+</div>
+<a href="#contacto" class="nav-btn">Pedir revisión técnica</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Productor Asesor de Seguros · Analista de Riesgos</div>
-  <h1>
-    <span class="line-white">Primero entender el riesgo.</span>
-    <span class="line-gold">Después, asegurarlo.</span>
-  </h1>
-  <p class="hero-body">
-    Me especializo en el análisis de riesgos de consorcios, comercios y PyMEs de logística e industria. Antes de cotizar, analizo qué necesitás cubrir y por cuánto.
-  </p>
-  <div class="hero-ctas">
-    <a href="#contacto" class="cta-main">Pedir revisión técnica</a>
-    <a href="#casos" class="cta-ghost">Ver lo que hago ↓</a>
-  </div>
+<div class="hero-eyebrow">Productor Asesor de Seguros · Analista de Riesgos</div>
+<h1>
+<span class="line-white">Primero entender el riesgo.</span>
+<span class="line-gold">Después, asegurarlo.</span>
+</h1>
+<p class="hero-body">
+Me especializo en el análisis de riesgos de consorcios, comercios y PyMEs de logística e industria. Antes de cotizar, analizo qué necesitás cubrir y por cuánto.
+</p>
+<div class="hero-ctas">
+<a href="#contacto" class="cta-main">Pedir revisión técnica</a>
+<a href="#casos" class="cta-ghost">Ver lo que hago ↓</a>
+</div>
 </section>
 
 <!-- CASOS -->
 <section class="casos" id="casos">
-  <div class="casos-label">¿Cuál es tu caso?</div>
-  <div class="casos-grid">
+<div class="casos-label">¿Cuál es tu caso?</div>
+<div class="casos-grid">
 
-    <div class="caso">
-      <div class="caso-num">01</div>
-      <h3>Consorcios de propietarios</h3>
-      <p>Para administradores profesionales y propietarios a cargo. Integral de consorcio, incendio, RC, ascensores y espacios comunes, con sumas aseguradas que acompañan la inflación.</p>
-    </div>
+<div class="caso">
+<div class="caso-num">01</div>
+<h3>Consorcios de propietarios</h3>
+<p>Para administradores profesionales y propietarios a cargo. Integral de consorcio, incendio, RC, ascensores y espacios comunes, con sumas aseguradas que acompañan la inflación.</p>
+</div>
 
-    <div class="caso">
-      <div class="caso-num">02</div>
-      <h3>Comercios minoristas</h3>
-      <p>Integral de comercio: edificio, contenido, robo y RC frente a clientes. Analizo tu actividad concreta para no pagar coberturas que no usás ni quedar con sumas bajas.</p>
-    </div>
+<div class="caso">
+<div class="caso-num">02</div>
+<h3>Comercios minoristas</h3>
+<p>Integral de comercio: edificio, contenido, robo y RC frente a clientes. Analizo tu actividad concreta para no pagar coberturas que no usás ni quedar con sumas bajas.</p>
+</div>
 
-    <div class="caso">
-      <div class="caso-num">03</div>
-      <h3>PyMEs de logística y transporte</h3>
-      <p>Todo Riesgo Operativo para depósitos y bases, transporte de mercaderías y flota comercial. La operación protegida en el depósito y en la ruta.</p>
-    </div>
+<div class="caso">
+<div class="caso-num">03</div>
+<h3>PyMEs de logística y transporte</h3>
+<p>Todo Riesgo Operativo para depósitos y bases, transporte de mercaderías y flota comercial. La operación protegida en el depósito y en la ruta.</p>
+</div>
 
-    <div class="caso">
-      <div class="caso-num">04</div>
-      <h3>Industrias y talleres</h3>
-      <p>Incendio, rotura de maquinaria, pérdida de beneficios y RC. Modelo pérdidas máximas para proteger la empresa sin descapitalizarla en primas.</p>
-    </div>
+<div class="caso">
+<div class="caso-num">04</div>
+<h3>Industrias y talleres</h3>
+<p>Incendio, rotura de maquinaria, pérdida de beneficios y RC. Modelo pérdidas máximas para proteger la empresa sin descapitalizarla en primas.</p>
+</div>
 
-  </div>
+</div>
 </section>
 
 <!-- DIFERENCIAL -->
 <div class="diferencial" id="diferencial">
-  <div class="dif-tag">Mi enfoque</div>
-  <blockquote>"La póliza es la consecuencia del análisis. No al revés."</blockquote>
-  <p>Muchas pólizas se renuevan año tras año sin que nadie vuelva a mirar el riesgo. Mi trabajo empieza antes: recorro tus instalaciones, entiendo tu actividad y diseño la cobertura desde ahí.</p>
+<div class="dif-tag">Mi enfoque</div>
+<blockquote>"La póliza es la consecuencia del análisis. No al revés."</blockquote>
+<p>Muchas pólizas se renuevan año tras año sin que nadie vuelva a mirar el riesgo. Mi trabajo empieza antes: recorro tus instalaciones, entiendo tu actividad y diseño la cobertura desde ahí.</p>
 </div>
 
 <!-- MÉTODO -->
 <section class="metodo" id="metodo">
-  <div class="metodo-header">Cómo trabajo</div>
-  <h2>Del riesgo a la cobertura,<br>sin atajos.</h2>
+<div class="metodo-header">Cómo trabajo</div>
+<h2>Del riesgo a la cobertura,<br>sin atajos.</h2>
 
-  <div class="pasos">
-    <div class="paso">
-      <div class="paso-n">01</div>
-      <div>
-        <h3>Diagnóstico del riesgo real</h3>
-        <p>La primera reunión no es sobre la póliza. Recorro tus instalaciones y entiendo tu actividad antes de hablar de coberturas.</p>
-      </div>
-    </div>
-    <div class="paso">
-      <div class="paso-n">02</div>
-      <div>
-        <h3>Matriz de riesgo y valor de reposición</h3>
-        <p>Identifico áreas críticas, estimo el valor de reposición para detectar infraseguro y cuantifico el impacto económico de cada evento: lucro cesante, RC, paralización.</p>
-      </div>
-    </div>
-    <div class="paso">
-      <div class="paso-n">03</div>
-      <div>
-        <h3>Transferencia diseñada a medida</h3>
-        <p>La póliza es la consecuencia del análisis: coberturas, sumas y deducibles definidos con criterio. Sin relleno y sin vacíos que se descubren recién en el siniestro.</p>
-      </div>
-    </div>
-    <div class="paso">
-      <div class="paso-n">04</div>
-      <div>
-        <h3>Seguimiento y siniestros</h3>
-        <p>Actualizo las sumas aseguradas durante la vigencia y te acompaño técnicamente si ocurre un siniestro: denuncia, documentación y seguimiento con la aseguradora.</p>
-      </div>
-    </div>
-  </div>
+<div class="pasos">
+<div class="paso">
+<div class="paso-n">01</div>
+<div>
+<h3>Diagnóstico del riesgo real</h3>
+<p>La primera reunión no es sobre la póliza. Recorro tus instalaciones y entiendo tu actividad antes de hablar de coberturas.</p>
+</div>
+</div>
+<div class="paso">
+<div class="paso-n">02</div>
+<div>
+<h3>Matriz de riesgo y valor de reposición</h3>
+<p>Identifico áreas críticas, estimo el valor de reposición para detectar infraseguro y cuantifico el impacto económico de cada evento: lucro cesante, RC, paralización.</p>
+</div>
+</div>
+<div class="paso">
+<div class="paso-n">03</div>
+<div>
+<h3>Transferencia diseñada a medida</h3>
+<p>La póliza es la consecuencia del análisis: coberturas, sumas y deducibles definidos con criterio. Sin relleno y sin vacíos que se descubren recién en el siniestro.</p>
+</div>
+</div>
+<div class="paso">
+<div class="paso-n">04</div>
+<div>
+<h3>Seguimiento y siniestros</h3>
+<p>Actualizo las sumas aseguradas durante la vigencia y te acompaño técnicamente si ocurre un siniestro: denuncia, documentación y seguimiento con la aseguradora.</p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- GALERÍA -->
 <section class="galeria" id="trabajos">
-  <div class="galeria-label">Lo que hago</div>
-  <h2>Trabajos, investigación<br>y comunidad.</h2>
-  <div class="gal-grid">
+<div class="galeria-label">Lo que hago</div>
+<h2>Trabajos, investigación<br>y comunidad.</h2>
+<div class="gal-grid">
 
-    <div class="gal-item">
-      <div class="gal-visual" aria-hidden="true"><i style="height:40%"></i><i class="hl" style="height:95%"></i><i style="height:40%"></i><i class="hl" style="height:70%"></i></div>
-      <span class="gal-tipo">Caso</span>
-      <h3>Infraseguro detectado en un comercio</h3>
-      <p>Comercio de 67 m² en Bella Vista: la suma de Incendio Edificio no reflejaba el valor real. La corregí antes de que ocurriera un siniestro.</p>
-    </div>
+<div class="gal-item">
+<div class="gal-visual" aria-hidden="true"><i style="height:40%"></i><i class="hl" style="height:95%"></i><i style="height:40%"></i><i class="hl" style="height:70%"></i></div>
+<span class="gal-tipo">Caso</span>
+<h3>Infraseguro detectado en un comercio</h3>
+<p>Comercio de 67 m² en Bella Vista: la suma de Incendio Edificio no reflejaba el valor real. La corregí antes de que ocurriera un siniestro.</p>
+</div>
 
-    <div class="gal-item">
-      <div class="gal-visual" aria-hidden="true"><i style="height:30%"></i><i style="height:50%"></i><i style="height:70%"></i><i class="hl" style="height:95%"></i></div>
-      <span class="gal-tipo">Caso</span>
-      <h3>Actualización trimestral en un consorcio</h3>
-      <p>Consorcio de 28 unidades en San Miguel: actualización trimestral de la suma de Incendio Edificio, para que la cobertura acompañe la inflación hasta alcanzar el valor de reconstrucción.</p>
-    </div>
+<div class="gal-item">
+<div class="gal-visual" aria-hidden="true"><i style="height:30%"></i><i style="height:50%"></i><i style="height:70%"></i><i class="hl" style="height:95%"></i></div>
+<span class="gal-tipo">Caso</span>
+<h3>Actualización trimestral en un consorcio</h3>
+<p>Consorcio de 28 unidades en San Miguel: actualización trimestral de la suma de Incendio Edificio, para que la cobertura acompañe la inflación hasta alcanzar el valor de reconstrucción.</p>
+</div>
 
-    <div class="gal-item">
-      <div class="gal-visual" aria-hidden="true"><i style="height:60%"></i><i class="hl" style="height:85%"></i><i style="height:55%"></i><i style="height:75%"></i></div>
-      <span class="gal-tipo">Caso</span>
-      <h3>Comparativo multipóliza para un consorcio</h3>
-      <p>Consorcio de 57 unidades: cuadro comparativo entre pólizas y aseguradoras con valuación de reposición, para decidir con números y no solo por precio.</p>
-    </div>
+<div class="gal-item">
+<div class="gal-visual" aria-hidden="true"><i style="height:60%"></i><i class="hl" style="height:85%"></i><i style="height:55%"></i><i style="height:75%"></i></div>
+<span class="gal-tipo">Caso</span>
+<h3>Comparativo multipóliza para un consorcio</h3>
+<p>Consorcio de 57 unidades: cuadro comparativo entre pólizas y aseguradoras con valuación de reposición, para decidir con números y no solo por precio.</p>
+</div>
 
-    <a class="gal-item" href="https://consorcios.mariofalcon.com.ar" target="_blank" rel="noopener">
-      <span class="gal-tipo">Investigación</span>
-      <h3>Carga de vehículos eléctricos en consorcios</h3>
-      <p>Qué riesgos genera la infraestructura de carga en cocheras y qué cubre (y qué no) la póliza del consorcio.</p>
-      <span class="gal-link">Ver la guía ↗</span>
-    </a>
+<a class="gal-item" href="https://consorcios.mariofalcon.com.ar" target="_blank" rel="noopener">
+<span class="gal-tipo">Investigación</span>
+<h3>Carga de vehículos eléctricos en consorcios</h3>
+<p>Qué riesgos genera la infraestructura de carga en cocheras y qué cubre (y qué no) la póliza del consorcio.</p>
+<span class="gal-link">Ver la guía ↗</span>
+</a>
 
-    <div class="gal-item">
-      <span class="gal-tipo">Investigación</span>
-      <h3>Think Tank Alumni CAES–AAPAS</h3>
-      <p>Integro el equipo que investiga riesgos emergentes del mercado asegurador argentino: electromovilidad, micromovilidad e infraestructura de carga. Participé de la Jornada Internacional de Gestión de Riesgos en Movilidad Eléctrica (UCA).</p>
-    </div>
+<div class="gal-item">
+<span class="gal-tipo">Investigación</span>
+<h3>Think Tank Alumni CAES–AAPAS</h3>
+<p>Integro el equipo que investiga riesgos emergentes del mercado asegurador argentino: electromovilidad, micromovilidad e infraestructura de carga. Participé de la Jornada Internacional de Gestión de Riesgos en Movilidad Eléctrica (UCA).</p>
+</div>
 
-    <div class="gal-item">
-      <span class="gal-tipo">Comunidad</span>
-      <h3>Coordinación Alumni AAPAS 2026</h3>
-      <p>Co-coordino la comunidad de Analistas de Riesgos PAS de la Asociación Argentina de Productores Asesores de Seguros: encuentros mensuales, formación continua y vinculación institucional.</p>
-    </div>
+<div class="gal-item">
+<span class="gal-tipo">Comunidad</span>
+<h3>Coordinación Alumni AAPAS 2026</h3>
+<p>Co-coordino la comunidad de Analistas de Riesgos PAS de la Asociación Argentina de Productores Asesores de Seguros: encuentros mensuales, formación continua y vinculación institucional.</p>
+</div>
 
-  </div>
+</div>
 </section>
 
 <!-- NOTAS ALUMNI -->
 <section class="galeria" id="notas">
-  <div class="galeria-label">Charlas y aprendizajes</div>
-  <h2>Lo que me dejan las charlas<br>con especialistas, explicado simple.</h2>
-  <p class="contacto-sub" style="max-width:640px">Participo todos los meses de charlas del Think Tank Alumni (Comunidad de Analistas de Riesgos PAS de AAPAS). Acá comparto lo que me llevo de cada una, sin tecnicismos.</p>
-  <div class="gal-grid">
+<div class="galeria-label">Charlas y aprendizajes</div>
+<h2>Lo que me dejan las charlas<br>con especialistas, explicado simple.</h2>
+<p class="contacto-sub" style="max-width:640px">Participo todos los meses de charlas del Think Tank Alumni (Comunidad de Analistas de Riesgos PAS de AAPAS). Acá comparto lo que me llevo de cada una, sin tecnicismos.</p>
+<div class="gal-grid">
 
-    <a class="gal-item" href="notas/baterias-litio.html">
-      <span class="gal-tipo">Agosto 2026</span>
-      <h3>Baterías de litio: el riesgo que casi nadie tiene en cuenta</h3>
-      <p>Monopatines, herramientas, UPS y autos eléctricos: qué conviene saber y qué hacer en consorcios, comercios y empresas.</p>
-      <span class="gal-link">Leer la nota →</span>
-    </a>
+<a class="gal-item" href="notas/baterias-litio.html">
+<span class="gal-tipo">Agosto 2026</span>
+<h3>Baterías de litio: el riesgo que casi nadie tiene en cuenta</h3>
+<p>Monopatines, herramientas, UPS y autos eléctricos: qué conviene saber y qué hacer en consorcios, comercios y empresas.</p>
+<span class="gal-link">Leer la nota →</span>
+</a>
 
-  </div>
+</div>
 </section>
 
 <!-- CONTACTO -->
 <section class="contacto" id="contacto">
-  <div class="contacto-label">Contacto</div>
-  <h2>Hablemos antes<br>de que lo necesites.</h2>
-  <p class="contacto-sub">Pedí una revisión técnica de tus coberturas. Sin cargo ni compromiso: en 24 horas tenés una respuesta concreta.</p>
+<div class="contacto-label">Contacto</div>
+<h2>Hablemos antes<br>de que lo necesites.</h2>
+<p class="contacto-sub">Pedí una revisión técnica de tus coberturas. Sin cargo ni compromiso: en 24 horas tenés una respuesta concreta.</p>
 
-  <div class="links-contacto">
-    <a class="link-c" id="link-email" href="mailto:contacto@mariofalcon.com.ar">
-      <span class="link-c-icon">✉️</span>
-      <div>
-        <span class="link-c-label">Email</span>
-        <span class="link-c-val">contacto@mariofalcon.com.ar</span>
-        <span class="link-c-hint" id="email-hint" aria-live="polite"></span>
-      </div>
-    </a>
-    <a class="link-c" href="https://wa.me/5491161148632" target="_blank" rel="noopener">
-      <span class="link-c-icon">💬</span>
-      <div>
-        <span class="link-c-label">WhatsApp</span>
-        <span class="link-c-val">+54 9 11 6114-8632</span>
-      </div>
-    </a>
-    <a class="link-c" href="https://www.linkedin.com/in/mariofalcon-riesgos" target="_blank" rel="noopener">
-      <span class="link-c-icon">💼</span>
-      <div>
-        <span class="link-c-label">LinkedIn</span>
-        <span class="link-c-val">mariofalcon-riesgos</span>
-      </div>
-    </a>
-    <a class="link-c" href="https://instagram.com/mf_pas" target="_blank" rel="noopener">
-      <span class="link-c-icon">📸</span>
-      <div>
-        <span class="link-c-label">Instagram</span>
-        <span class="link-c-val">@mf_pas</span>
-      </div>
-    </a>
-  </div>
+<div class="links-contacto">
+<a class="link-c" id="link-email" href="mailto:contacto@mariofalcon.com.ar">
+<span class="link-c-icon">✉️</span>
+<div>
+<span class="link-c-label">Email</span>
+<span class="link-c-val">contacto@mariofalcon.com.ar</span>
+<span class="link-c-hint" id="email-hint" aria-live="polite"></span>
+</div>
+</a>
+<a class="link-c" href="https://wa.me/5491161148632" target="_blank" rel="noopener">
+<span class="link-c-icon">💬</span>
+<div>
+<span class="link-c-label">WhatsApp</span>
+<span class="link-c-val">+54 9 11 6114-8632</span>
+</div>
+</a>
+<a class="link-c" href="https://www.linkedin.com/in/mariofalcon-riesgos" target="_blank" rel="noopener">
+<span class="link-c-icon">💼</span>
+<div>
+<span class="link-c-label">LinkedIn</span>
+<span class="link-c-val">mariofalcon-riesgos</span>
+</div>
+</a>
+<a class="link-c" href="https://instagram.com/mf_pas" target="_blank" rel="noopener">
+<span class="link-c-icon">📸</span>
+<div>
+<span class="link-c-label">Instagram</span>
+<span class="link-c-val">@mf_pas</span>
+</div>
+</a>
+</div>
 
-  <div class="wa-box">
-    <h3>Pedí tu revisión técnica</h3>
-    <p class="wa-sub">Completá el formulario y te respondo por mail o WhatsApp.</p>
+<div class="wa-box">
+<h3>Pedí tu revisión técnica</h3>
+<p class="wa-sub">Completá el formulario y te respondo por mail o WhatsApp.</p>
 
-    <form id="form-revision" action="https://formspree.io/f/mzezplrg" method="POST">
-      <input type="hidden" name="_subject" value="Nueva consulta desde mariofalcon.com.ar">
-      <input type="hidden" name="origen" id="origen" value="directo">
-      <div class="hp" aria-hidden="true"><label>No completar<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+<form id="form-revision" action="https://formspree.io/f/mzezplrg" method="POST">
+<input type="hidden" name="_subject" value="Nueva consulta desde mariofalcon.com.ar">
+<input type="hidden" name="origen" id="origen" value="directo">
+<div class="hp" aria-hidden="true"><label>No completar<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
-      <div class="fg">
-        <label for="nombre">Nombre y empresa o administración</label>
-        <input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder="Ej: Juan Pérez / Administración Sur">
-      </div>
-      <div class="fg-row">
-        <div class="fg">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required autocomplete="email" placeholder="nombre@empresa.com">
-        </div>
-        <div class="fg">
-          <label for="whatsapp">WhatsApp <span class="opt">(opcional)</span></label>
-          <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" placeholder="+54 9 11 ...">
-        </div>
-      </div>
-      <div class="fg-row">
-        <div class="fg">
-          <label for="rubro">¿Qué necesitás asegurar?</label>
-          <select id="rubro" name="rubro" required>
-            <option value="Consorcio">Consorcio</option>
-            <option value="Comercio">Comercio</option>
-            <option value="PyME de logística o transporte">PyME de logística o transporte</option>
-            <option value="Industria o taller">Industria o taller</option>
-            <option value="Otro">Otro</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label for="vencimiento">Vencimiento de tu póliza</label>
-          <select id="vencimiento" name="vencimiento">
-            <option value="No sé / no tengo póliza">No sé / no tengo póliza</option>
-            <option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option>
-            <option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option>
-            <option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
-          </select>
-        </div>
-      </div>
-      <div class="fg">
-        <label for="mensaje">Contame tu caso <span class="opt">(opcional)</span></label>
-        <textarea id="mensaje" name="mensaje" placeholder="Ej: consorcio de 40 unidades, queremos revisar si las sumas están actualizadas."></textarea>
-      </div>
+<div class="fg">
+<label for="nombre">Nombre y empresa o administración</label>
+<input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder="Ej: Juan Pérez / Administración Sur">
+</div>
+<div class="fg-row">
+<div class="fg">
+<label for="email">Email</label>
+<input type="email" id="email" name="email" required autocomplete="email" placeholder="nombre@empresa.com">
+</div>
+<div class="fg">
+<label for="whatsapp">WhatsApp <span class="opt">(opcional)</span></label>
+<input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" placeholder="+54 9 11 ...">
+</div>
+</div>
+<div class="fg-row">
+<div class="fg">
+<label for="rubro">¿Qué necesitás asegurar?</label>
+<select id="rubro" name="rubro" required>
+<option value="Consorcio">Consorcio</option>
+<option value="Comercio">Comercio</option>
+<option value="PyME de logística o transporte">PyME de logística o transporte</option>
+<option value="Industria o taller">Industria o taller</option>
+<option value="Otro">Otro</option>
+</select>
+</div>
+<div class="fg">
+<label for="vencimiento">Vencimiento de tu póliza</label>
+<select id="vencimiento" name="vencimiento">
+<option value="No sé / no tengo póliza">No sé / no tengo póliza</option>
+<option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option>
+<option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option>
+<option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
+</select>
+</div>
+</div>
+<div class="fg">
+<label for="mensaje">Contame tu caso <span class="opt">(opcional)</span></label>
+<textarea id="mensaje" name="mensaje" placeholder="Ej: consorcio de 40 unidades, queremos revisar si las sumas están actualizadas."></textarea>
+</div>
 
-      <button type="submit" class="btn-send" id="btn-send">Pedir revisión técnica</button>
-      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-    </form>
-    <p class="form-alt">¿Preferís escribir directo? <a href="https://wa.me/5491161148632" target="_blank" rel="noopener">Hablar por WhatsApp</a></p>
-  </div>
+<button type="submit" class="btn-send" id="btn-send">Pedir revisión técnica</button>
+<p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+</form>
+<p class="form-alt">¿Preferís escribir directo? <a href="https://wa.me/5491161148632" target="_blank" rel="noopener">Hablar por WhatsApp</a></p>
+</div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span>Mario Falcón</span> · Productor Asesor de Seguros<br>
-  Matrícula SSN Nº 98319 · Buenos Aires
+<span>Mario Falcón</span> · Productor Asesor de Seguros<br>
+Matrícula SSN Nº 98319 · Buenos Aires
 </footer>
+
+<!-- Relay oculto: replica el lead hacia Brevo (lista "Leads Web mariofalcon.com.ar") sin cambiar el formulario visible ni la experiencia del visitante -->
+<iframe name="brevo-relay" style="display:none" aria-hidden="true"></iframe>
+<form id="form-brevo-relay" action="https://aa5593e6.sibforms.com/serve/MUIFANIJ07i-SEFkaFoYM6-UaHmqcXA-Z53_NaybxNXBPHatImqToYDL6JPuiP_lhCV52flhdvVX0WBZZNQ7viVK4dVQzimsxtdEjsi9xqTf3WTdINOrw2U-pB2DLr9HBA3Q4Vhpfg6UdATBSJFRJrw3fcfp5WyQg3dUPTpGtOk3Bk_hij4VY60sYx7YGD-7acHeGo2A-diaOHK2wg==" method="POST" target="brevo-relay" style="display:none" aria-hidden="true">
+<input type="hidden" name="EMAIL" id="brevo-email">
+<input type="hidden" name="SEGMENTO" id="brevo-segmento">
+<input type="hidden" name="locale" value="es">
+<input type="text" name="email_address_check" value="" style="display:none">
+</form>
 
 <script>
 (function () {
-  // Guarda el origen de la visita (ej. ?utm_source=linkedin) para saber de dónde llegó la consulta
-  var params = new URLSearchParams(window.location.search);
-  var src = params.get('utm_source');
-  if (src) {
-    var parts = [src, params.get('utm_medium'), params.get('utm_campaign')].filter(Boolean);
-    document.getElementById('origen').value = parts.join(' / ');
-  }
+// Guarda el origen de la visita (ej. ?utm_source=linkedin) para saber de dónde llegó la consulta
+var params = new URLSearchParams(window.location.search);
+var src = params.get('utm_source');
+if (src) {
+var parts = [src, params.get('utm_medium'), params.get('utm_campaign')].filter(Boolean);
+document.getElementById('origen').value = parts.join(' / ');
+}
 
-  // Email: además de abrir el programa de correo, copia la dirección (en computadoras sin programa de correo configurado el mailto no hace nada)
-  var linkEmail = document.getElementById('link-email');
-  var hint = document.getElementById('email-hint');
-  linkEmail.addEventListener('click', function () {
-    var mail = 'contacto@mariofalcon.com.ar';
-    function ok() {
-      hint.textContent = 'Dirección copiada. Pegala en tu correo.';
-      setTimeout(function () { hint.textContent = ''; }, 4000);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(mail).then(ok, function () {});
-    }
-  });
+// Email: además de abrir el programa de correo, copia la dirección (en computadoras sin programa de correo configurado el mailto no hace nada)
+var linkEmail = document.getElementById('link-email');
+var hint = document.getElementById('email-hint');
+linkEmail.addEventListener('click', function () {
+var mail = 'contacto@mariofalcon.com.ar';
+function ok() {
+hint.textContent = 'Dirección copiada. Pegala en tu correo.';
+setTimeout(function () { hint.textContent = ''; }, 4000);
+}
+if (navigator.clipboard && navigator.clipboard.writeText) {
+navigator.clipboard.writeText(mail).then(ok, function () {});
+}
+});
 
-  var form = document.getElementById('form-revision');
-  var status = document.getElementById('form-status');
-  var btn = document.getElementById('btn-send');
+// Mapea el rubro elegido al SEGMENTO de Brevo (Consorcios / Comercios / PyMEs)
+var SEGMENTO_POR_RUBRO = {
+'Consorcio': 'Consorcios',
+'Comercio': 'Comercios',
+'PyME de logística o transporte': 'PyMEs',
+'Industria o taller': 'PyMEs',
+'Otro': ''
+};
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    status.className = 'form-status';
-    status.textContent = 'Enviando…';
-    btn.disabled = true;
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function (res) {
-      if (res.ok) {
-        form.reset();
-        status.className = 'form-status ok';
-        status.textContent = 'Consulta enviada. Te respondo dentro de las próximas 24 horas.';
-      } else {
-        throw new Error('envio');
-      }
-    }).catch(function () {
-      status.className = 'form-status err';
-      status.textContent = 'No se pudo enviar. Escribime a contacto@mariofalcon.com.ar o por WhatsApp.';
-    }).finally(function () {
-      btn.disabled = false;
-    });
-  });
+function enviarABrevo(email, rubro) {
+try {
+document.getElementById('brevo-email').value = email;
+document.getElementById('brevo-segmento').value = SEGMENTO_POR_RUBRO[rubro] || '';
+document.getElementById('form-brevo-relay').submit();
+} catch (e) {
+// Si falla el relay a Brevo no debe afectar el envío principal del formulario
+}
+}
+
+var form = document.getElementById('form-revision');
+var status = document.getElementById('form-status');
+var btn = document.getElementById('btn-send');
+
+form.addEventListener('submit', function (e) {
+e.preventDefault();
+status.className = 'form-status';
+status.textContent = 'Enviando…';
+btn.disabled = true;
+
+// Alta en Brevo en paralelo (doble opt-in): no bloquea ni depende del envío por Formspree
+enviarABrevo(document.getElementById('email').value, document.getElementById('rubro').value);
+
+fetch(form.action, {
+method: 'POST',
+body: new FormData(form),
+headers: { 'Accept': 'application/json' }
+}).then(function (res) {
+if (res.ok) {
+form.reset();
+status.className = 'form-status ok';
+status.textContent = 'Consulta enviada. Te respondo dentro de las próximas 24 horas.';
+} else {
+throw new Error('envio');
+}
+}).catch(function () {
+status.className = 'form-status err';
+status.textContent = 'No se pudo enviar. Escribime a contacto@mariofalcon.com.ar o por WhatsApp.';
+}).finally(function () {
+btn.disabled = false;
+});
+});
 })();
 </script>
 </body>
